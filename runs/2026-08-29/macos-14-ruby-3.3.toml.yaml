@@ -18,7 +18,7 @@ environment_config:
   name: ci-ruby-3.3-macos-14
   description: CI environment for Ruby 3.3 on macos-14
   kind: local
-  created_at: '2026-08-29T01:13:03Z'
+  created_at: '2026-08-29T12:42:15Z'
   ruby_build_tag: '3.3'
 benchmark_config:
   name: full-toml
@@ -34,8 +34,8 @@ benchmark_config:
     large: 1
   warmup: 2
   operations:
-  - parse
-  - generate
+  - parsing
+  - generation
   - streaming
   - memory
 benchmark_result:
@@ -43,148 +43,215 @@ benchmark_result:
   - format: xml
     name: rexml
     version: 3.4.4
+    features:
+      :xpath: true
+      :namespaces: true
+      :validation: false
+      :streaming: false
+      :stax: false
   - format: xml
     name: ox
     version: 2.14.29
+    features:
+      :xpath: false
+      :namespaces: true
+      :validation: false
+      :streaming: true
+      :stax: false
   - format: xml
     name: nokogiri
     version: 1.19.4
+    features:
+      :xpath: true
+      :namespaces: true
+      :validation: false
+      :streaming: true
+      :stax: true
   - format: xml
     name: oga
     version: '3.5'
+    features:
+      :xpath: true
+      :namespaces: true
+      :validation: false
+      :streaming: true
+      :stax: false
   - format: xml
     name: leptris
     version: 1.9.35
+    features:
+      :xpath: true
+      :namespaces: true
+      :validation: false
+      :streaming: true
+      :stax: true
   - format: json
     name: json
     version: 2.21.2
+    features:
+      :pretty_print: true
+      :streaming: false
+      :symbol_keys: false
+      :custom_types: false
   - format: json
     name: oj
     version: 3.17.6
+    features:
+      :pretty_print: true
+      :streaming: true
+      :symbol_keys: true
+      :custom_types: true
   - format: json
     name: rapidjson
     version: 0.4.0
+    features:
+      :pretty_print: true
+      :streaming: false
+      :symbol_keys: false
+      :custom_types: false
   - format: json
     name: yajl
     version: 1.4.3
+    features:
+      :pretty_print: true
+      :streaming: true
+      :symbol_keys: false
+      :custom_types: false
   - format: yaml
     name: psych
     version: 5.1.2
+    features:
+      :streaming: false
   - format: toml
     name: toml-rb
     version: 4.2.1
+    features:
+      :comments: false
+      :arrays_of_tables: true
+      :inline_tables: true
+      :multiline_strings: true
   - format: toml
     name: tomlib
     version: 0.7.3
+    features:
+      :comments: false
+      :arrays_of_tables: true
+      :inline_tables: true
+      :multiline_strings: true
   - format: toml
     name: tomlrb
     version: 2.0.4
+    features:
+      :comments: false
+      :arrays_of_tables: true
+      :inline_tables: true
+      :multiline_strings: true
   parsing:
   - adapter: toml-rb
     format: toml
     data_size: small
-    time_per_iterations: 0.014500999999654596
-    time_per_iteration: 0.0014500999999654597
-    iterations_per_second: 689.6076132844764
+    time_per_iterations: 0.017311000000518106
+    time_per_iteration: 0.0017311000000518107
+    iterations_per_second: 577.6673791058117
     iterations_count: 10
   - adapter: tomlib
     format: toml
     data_size: small
-    time_per_iterations: 3.80000001314329e-05
-    time_per_iteration: 3.80000001314329e-06
-    iterations_per_second: 263157.89382664196
+    time_per_iterations: 3.500000002532033e-05
+    time_per_iteration: 3.5000000025320334e-06
+    iterations_per_second: 285714.2855075891
     iterations_count: 10
   - adapter: tomlrb
     format: toml
     data_size: small
-    time_per_iterations: 0.001388000000588363
-    time_per_iteration: 0.0001388000000588363
-    iterations_per_second: 7204.610947954664
+    time_per_iterations: 0.0013650000000779983
+    time_per_iteration: 0.00013650000000779982
+    iterations_per_second: 7326.007325588706
     iterations_count: 10
   - adapter: toml-rb
     format: toml
     data_size: medium
-    time_per_iterations: 0.5689299999994546
-    time_per_iteration: 0.18964333333315153
-    iterations_per_second: 5.27305643928581
+    time_per_iterations: 0.5245770000001357
+    time_per_iteration: 0.17485900000004526
+    iterations_per_second: 5.718893508482498
     iterations_count: 3
   - adapter: tomlib
     format: toml
     data_size: medium
-    time_per_iterations: 0.0011000000013154931
-    time_per_iteration: 0.0003666666671051644
-    iterations_per_second: 2727.272724011174
+    time_per_iterations: 0.0012230000002091401
+    time_per_iteration: 0.00040766666673638
+    iterations_per_second: 2452.9844640122506
     iterations_count: 3
   - adapter: tomlrb
     format: toml
     data_size: medium
-    time_per_iterations: 0.06713700000000244
-    time_per_iteration: 0.022379000000000815
-    iterations_per_second: 44.684749095132204
+    time_per_iterations: 0.04460999999992055
+    time_per_iteration: 0.014869999999973516
+    iterations_per_second: 67.24949562890257
     iterations_count: 3
   - adapter: toml-rb
     format: toml
     data_size: large
-    time_per_iterations: 2.307585000000472
-    time_per_iteration: 2.307585000000472
-    iterations_per_second: 0.43335348427026327
+    time_per_iterations: 2.27976899999976
+    time_per_iteration: 2.27976899999976
+    iterations_per_second: 0.4386409324804861
     iterations_count: 1
   - adapter: tomlib
     format: toml
     data_size: large
-    time_per_iterations: 0.005280999999740743
-    time_per_iteration: 0.005280999999740743
-    iterations_per_second: 189.35807613124265
+    time_per_iterations: 0.005586000000221247
+    time_per_iteration: 0.005586000000221247
+    iterations_per_second: 179.01897600436672
     iterations_count: 1
   - adapter: tomlrb
     format: toml
     data_size: large
-    time_per_iterations: 0.24560500000006869
-    time_per_iteration: 0.24560500000006869
-    iterations_per_second: 4.07157834734521
+    time_per_iterations: 0.20524399999976595
+    time_per_iteration: 0.20524399999976595
+    iterations_per_second: 4.872249615097837
     iterations_count: 1
   generation:
   - adapter: toml-rb
     format: toml
     data_size: small
-    time_per_iterations: 0.0230890000002546
-    time_per_iteration: 0.00230890000002546
-    iterations_per_second: 433.1066741690732
+    time_per_iterations: 0.016096000000288768
+    time_per_iteration: 0.0016096000000288767
+    iterations_per_second: 621.2723657940231
     iterations_count: 10
   - adapter: tomlib
     format: toml
     data_size: small
-    time_per_iterations: 0.00010699999984353781
-    time_per_iteration: 1.0699999984353781e-05
-    iterations_per_second: 93457.94406189378
+    time_per_iterations: 0.0001229999998031417
+    time_per_iteration: 1.2299999980314169e-05
+    iterations_per_second: 81300.81313824993
     iterations_count: 10
   - adapter: toml-rb
     format: toml
     data_size: medium
-    time_per_iterations: 0.508466999999655
-    time_per_iteration: 0.16948899999988498
-    iterations_per_second: 5.900087911313882
+    time_per_iterations: 0.5119250000007014
+    time_per_iteration: 0.17064166666690048
+    iterations_per_second: 5.860233432623704
     iterations_count: 3
   - adapter: tomlib
     format: toml
     data_size: medium
-    time_per_iterations: 0.003210999999282649
-    time_per_iteration: 0.0010703333330942162
-    iterations_per_second: 934.2883838898202
+    time_per_iterations: 0.0034720000003289897
+    time_per_iteration: 0.0011573333334429965
+    iterations_per_second: 864.0552994572969
     iterations_count: 3
   - adapter: toml-rb
     format: toml
     data_size: large
-    time_per_iterations: 2.825070999999298
-    time_per_iteration: 2.825070999999298
-    iterations_per_second: 0.35397340456230963
+    time_per_iterations: 2.8799040000003515
+    time_per_iteration: 2.8799040000003515
+    iterations_per_second: 0.3472337966820692
     iterations_count: 1
   - adapter: tomlib
     format: toml
     data_size: large
-    time_per_iterations: 0.013544999999794527
-    time_per_iteration: 0.013544999999794527
-    iterations_per_second: 73.82798080584493
+    time_per_iterations: 0.01581400000031863
+    time_per_iteration: 0.01581400000031863
+    iterations_per_second: 63.235108130760814
     iterations_count: 1
   memory:
   - adapter: toml-rb
@@ -232,21 +299,21 @@ benchmark_result:
   - adapter: toml-rb
     format: toml
     data_size: large
-    total_allocated: 27107267
+    total_allocated: 27107268
     total_retained: 0
-    allocated_memory: 2162194920
+    allocated_memory: 2162194960
     retained_memory: 0
   - adapter: tomlib
     format: toml
     data_size: large
-    total_allocated: 240127
+    total_allocated: 240128
     total_retained: 0
-    allocated_memory: 13689080
+    allocated_memory: 13689120
     retained_memory: 0
   - adapter: tomlrb
     format: toml
     data_size: large
-    total_allocated: 3711527
+    total_allocated: 3711528
     total_retained: 0
-    allocated_memory: 188899000
+    allocated_memory: 188899040
     retained_memory: 0
