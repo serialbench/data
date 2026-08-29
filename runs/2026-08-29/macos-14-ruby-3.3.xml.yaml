@@ -18,7 +18,7 @@ environment_config:
   name: ci-ruby-3.3-macos-14
   description: CI environment for Ruby 3.3 on macos-14
   kind: local
-  created_at: '2026-08-29T01:13:03Z'
+  created_at: '2026-08-29T12:42:15Z'
   ruby_build_tag: '3.3'
 benchmark_config:
   name: full-xml
@@ -34,8 +34,8 @@ benchmark_config:
     large: 1
   warmup: 2
   operations:
-  - parse
-  - generate
+  - parsing
+  - generation
   - streaming
   - xpath
   - memory
@@ -44,253 +44,320 @@ benchmark_result:
   - format: xml
     name: rexml
     version: 3.4.4
+    features:
+      :xpath: true
+      :namespaces: true
+      :validation: false
+      :streaming: false
+      :stax: false
   - format: xml
     name: ox
     version: 2.14.29
+    features:
+      :xpath: false
+      :namespaces: true
+      :validation: false
+      :streaming: true
+      :stax: false
   - format: xml
     name: nokogiri
     version: 1.19.4
+    features:
+      :xpath: true
+      :namespaces: true
+      :validation: false
+      :streaming: true
+      :stax: true
   - format: xml
     name: oga
     version: '3.5'
+    features:
+      :xpath: true
+      :namespaces: true
+      :validation: false
+      :streaming: true
+      :stax: false
   - format: xml
     name: leptris
     version: 1.9.35
+    features:
+      :xpath: true
+      :namespaces: true
+      :validation: false
+      :streaming: true
+      :stax: true
   - format: json
     name: json
     version: 2.21.2
+    features:
+      :pretty_print: true
+      :streaming: false
+      :symbol_keys: false
+      :custom_types: false
   - format: json
     name: oj
     version: 3.17.6
+    features:
+      :pretty_print: true
+      :streaming: true
+      :symbol_keys: true
+      :custom_types: true
   - format: json
     name: rapidjson
     version: 0.4.0
+    features:
+      :pretty_print: true
+      :streaming: false
+      :symbol_keys: false
+      :custom_types: false
   - format: json
     name: yajl
     version: 1.4.3
+    features:
+      :pretty_print: true
+      :streaming: true
+      :symbol_keys: false
+      :custom_types: false
   - format: yaml
     name: psych
     version: 5.1.2
+    features:
+      :streaming: false
   - format: toml
     name: toml-rb
     version: 4.2.1
+    features:
+      :comments: false
+      :arrays_of_tables: true
+      :inline_tables: true
+      :multiline_strings: true
   - format: toml
     name: tomlib
     version: 0.7.3
+    features:
+      :comments: false
+      :arrays_of_tables: true
+      :inline_tables: true
+      :multiline_strings: true
   - format: toml
     name: tomlrb
     version: 2.0.4
+    features:
+      :comments: false
+      :arrays_of_tables: true
+      :inline_tables: true
+      :multiline_strings: true
   parsing:
   - adapter: rexml
     format: xml
     data_size: small
-    time_per_iterations: 0.0012660000002142624
-    time_per_iteration: 0.00012660000002142623
-    iterations_per_second: 7898.8941534814885
+    time_per_iterations: 0.0012419999999906395
+    time_per_iteration: 0.00012419999999906394
+    iterations_per_second: 8051.529790720907
     iterations_count: 10
   - adapter: ox
     format: xml
     data_size: small
-    time_per_iterations: 2.900000026784255e-05
-    time_per_iteration: 2.900000026784255e-06
-    iterations_per_second: 344827.58302208624
+    time_per_iterations: 3.100000000699765e-05
+    time_per_iteration: 3.1000000006997652e-06
+    iterations_per_second: 322580.645088474
     iterations_count: 10
   - adapter: nokogiri
     format: xml
     data_size: small
-    time_per_iterations: 9.299999965151073e-05
-    time_per_iteration: 9.299999965151073e-06
-    iterations_per_second: 107526.88212335446
+    time_per_iterations: 0.0001010000000007949
+    time_per_iteration: 1.010000000007949e-05
+    iterations_per_second: 99009.90098931978
     iterations_count: 10
   - adapter: oga
     format: xml
     data_size: small
-    time_per_iterations: 0.0009999999997489795
-    time_per_iteration: 9.999999997489795e-05
-    iterations_per_second: 10000.000002510205
+    time_per_iterations: 0.000999999999990564
+    time_per_iteration: 9.99999999990564e-05
+    iterations_per_second: 10000.00000009436
     iterations_count: 10
   - adapter: leptris
     format: xml
     data_size: small
-    time_per_iterations: 5.899999996472616e-05
-    time_per_iteration: 5.899999996472615e-06
-    iterations_per_second: 169491.5255250613
+    time_per_iterations: 6.199999999978445e-05
+    time_per_iteration: 6.199999999978445e-06
+    iterations_per_second: 161290.3225812059
     iterations_count: 10
   - adapter: rexml
     format: xml
     data_size: medium
-    time_per_iterations: 0.3586499999996704
-    time_per_iteration: 0.11954999999989013
-    iterations_per_second: 8.364700961948298
+    time_per_iterations: 0.3756839999999926
+    time_per_iteration: 0.12522799999999754
+    iterations_per_second: 7.985434567349313
     iterations_count: 3
   - adapter: ox
     format: xml
     data_size: medium
-    time_per_iterations: 0.008166000000073836
-    time_per_iteration: 0.0027220000000246123
-    iterations_per_second: 367.376928725554
+    time_per_iterations: 0.0135970000000043
+    time_per_iteration: 0.004532333333334766
+    iterations_per_second: 220.63690519960662
     iterations_count: 3
   - adapter: nokogiri
     format: xml
     data_size: medium
-    time_per_iterations: 0.009007000000110565
-    time_per_iteration: 0.0030023333333701885
-    iterations_per_second: 333.074275559362
+    time_per_iterations: 0.013170000000002346
+    time_per_iteration: 0.004390000000000782
+    iterations_per_second: 227.79043280178175
     iterations_count: 3
   - adapter: oga
     format: xml
     data_size: medium
-    time_per_iterations: 0.3152799999998024
-    time_per_iteration: 0.10509333333326747
-    iterations_per_second: 9.515351433652247
+    time_per_iterations: 0.3663230000000084
+    time_per_iteration: 0.12210766666666946
+    iterations_per_second: 8.189493971167334
     iterations_count: 3
   - adapter: leptris
     format: xml
     data_size: medium
-    time_per_iterations: 0.002246000000013737
-    time_per_iteration: 0.0007486666666712457
-    iterations_per_second: 1335.7079251921866
+    time_per_iterations: 0.0017730000000000246
+    time_per_iteration: 0.0005910000000000082
+    iterations_per_second: 1692.0473773265417
     iterations_count: 3
   - adapter: rexml
     format: xml
     data_size: large
-    time_per_iterations: 2.1979299999998148
-    time_per_iteration: 2.1979299999998148
-    iterations_per_second: 0.4549735432884961
+    time_per_iterations: 1.8412919999999957
+    time_per_iteration: 1.8412919999999957
+    iterations_per_second: 0.543096912385435
     iterations_count: 1
   - adapter: ox
     format: xml
     data_size: large
-    time_per_iterations: 0.10034600000017235
-    time_per_iteration: 0.10034600000017235
-    iterations_per_second: 9.965519303193775
+    time_per_iterations: 0.02672700000000816
+    time_per_iteration: 0.02672700000000816
+    iterations_per_second: 37.41534777564615
     iterations_count: 1
   - adapter: nokogiri
     format: xml
     data_size: large
-    time_per_iterations: 0.045504000000164524
-    time_per_iteration: 0.045504000000164524
-    iterations_per_second: 21.976090013985242
+    time_per_iterations: 0.08837900000000332
+    time_per_iteration: 0.08837900000000332
+    iterations_per_second: 11.314905124520106
     iterations_count: 1
   - adapter: oga
     format: xml
     data_size: large
-    time_per_iterations: 1.7033599999999751
-    time_per_iteration: 1.7033599999999751
-    iterations_per_second: 0.5870749577306116
+    time_per_iterations: 1.6284180000000106
+    time_per_iteration: 1.6284180000000106
+    iterations_per_second: 0.6140929417385422
     iterations_count: 1
   - adapter: leptris
     format: xml
     data_size: large
-    time_per_iterations: 0.042414000000007945
-    time_per_iteration: 0.042414000000007945
-    iterations_per_second: 23.577120762008125
+    time_per_iterations: 0.019598999999999478
+    time_per_iteration: 0.019598999999999478
+    iterations_per_second: 51.0230113781329
     iterations_count: 1
   generation:
   - adapter: rexml
     format: xml
     data_size: small
-    time_per_iterations: 0.0019090000000687724
-    time_per_iteration: 0.00019090000000687724
-    iterations_per_second: 5238.344682891434
+    time_per_iterations: 0.0015740000000050713
+    time_per_iteration: 0.00015740000000050714
+    iterations_per_second: 6353.240152457294
     iterations_count: 10
   - adapter: ox
     format: xml
     data_size: small
-    time_per_iterations: 3.90000000152213e-05
-    time_per_iteration: 3.90000000152213e-06
-    iterations_per_second: 256410.2563101821
+    time_per_iterations: 3.8000000003535206e-05
+    time_per_iteration: 3.8000000003535207e-06
+    iterations_per_second: 263157.89471236005
     iterations_count: 10
   - adapter: nokogiri
     format: xml
     data_size: small
-    time_per_iterations: 0.00014799999962633592
-    time_per_iteration: 1.4799999962633593e-05
-    iterations_per_second: 67567.56773815928
+    time_per_iterations: 0.00012300000000209366
+    time_per_iteration: 1.2300000000209365e-05
+    iterations_per_second: 81300.8130067462
     iterations_count: 10
   - adapter: oga
     format: xml
     data_size: small
-    time_per_iterations: 0.0019820000002255256
-    time_per_iteration: 0.00019820000002255256
-    iterations_per_second: 5045.408677528825
+    time_per_iterations: 0.0014089999999953307
+    time_per_iteration: 0.00014089999999953307
+    iterations_per_second: 7097.232079512519
     iterations_count: 10
   - adapter: leptris
     format: xml
     data_size: small
-    time_per_iterations: 0.00010700000029828516
-    time_per_iteration: 1.0700000029828515e-05
-    iterations_per_second: 93457.94366469984
+    time_per_iterations: 0.00010600000000238197
+    time_per_iteration: 1.0600000000238196e-05
+    iterations_per_second: 94339.62263938949
     iterations_count: 10
   - adapter: rexml
     format: xml
     data_size: medium
-    time_per_iterations: 0.43209299999989526
-    time_per_iteration: 0.14403099999996508
-    iterations_per_second: 6.942949781645912
+    time_per_iterations: 0.394211999999996
+    time_per_iteration: 0.13140399999999866
+    iterations_per_second: 7.61011841344259
     iterations_count: 3
   - adapter: ox
     format: xml
     data_size: medium
-    time_per_iterations: 0.014595999999983178
-    time_per_iteration: 0.004865333333327726
-    iterations_per_second: 205.53576322303766
+    time_per_iterations: 0.008862999999990961
+    time_per_iteration: 0.0029543333333303203
+    iterations_per_second: 338.4858400093715
     iterations_count: 3
   - adapter: nokogiri
     format: xml
     data_size: medium
-    time_per_iterations: 0.017722999999932654
-    time_per_iteration: 0.005907666666644218
-    iterations_per_second: 169.27156801960163
+    time_per_iterations: 0.01642799999999056
+    time_per_iteration: 0.005475999999996854
+    iterations_per_second: 182.61504748001727
     iterations_count: 3
   - adapter: oga
     format: xml
     data_size: medium
-    time_per_iterations: 0.4091240000002472
-    time_per_iteration: 0.13637466666674905
-    iterations_per_second: 7.332740196121928
+    time_per_iterations: 0.48300099999998736
+    time_per_iteration: 0.1610003333333291
+    iterations_per_second: 6.211167264664211
     iterations_count: 3
   - adapter: leptris
     format: xml
     data_size: medium
-    time_per_iterations: 0.008451000000150088
-    time_per_iteration: 0.0028170000000500295
-    iterations_per_second: 354.98757542855526
+    time_per_iterations: 0.005317000000005123
+    time_per_iteration: 0.001772333333335041
+    iterations_per_second: 564.2279480904851
     iterations_count: 3
   - adapter: rexml
     format: xml
     data_size: large
-    time_per_iterations: 2.260171999999784
-    time_per_iteration: 2.260171999999784
-    iterations_per_second: 0.4424442033615564
+    time_per_iterations: 2.138415000000009
+    time_per_iteration: 2.138415000000009
+    iterations_per_second: 0.4676360762527366
     iterations_count: 1
   - adapter: ox
     format: xml
     data_size: large
-    time_per_iterations: 0.0627489999997124
-    time_per_iteration: 0.0627489999997124
-    iterations_per_second: 15.936508948422818
+    time_per_iterations: 0.04661699999999769
+    time_per_iteration: 0.04661699999999769
+    iterations_per_second: 21.451401849111903
     iterations_count: 1
   - adapter: nokogiri
     format: xml
     data_size: large
-    time_per_iterations: 0.0949639999998908
-    time_per_iteration: 0.0949639999998908
-    iterations_per_second: 10.530306221317025
+    time_per_iterations: 0.08926799999998991
+    time_per_iteration: 0.08926799999998991
+    iterations_per_second: 11.202222520949423
     iterations_count: 1
   - adapter: oga
     format: xml
     data_size: large
-    time_per_iterations: 2.3085149999997157
-    time_per_iteration: 2.3085149999997157
-    iterations_per_second: 0.4331789050537351
+    time_per_iterations: 2.327826999999985
+    time_per_iteration: 2.327826999999985
+    iterations_per_second: 0.4295851882463802
     iterations_count: 1
   - adapter: leptris
     format: xml
     data_size: large
-    time_per_iterations: 0.03577300000006289
-    time_per_iteration: 0.03577300000006289
-    iterations_per_second: 27.954043552350708
+    time_per_iterations: 0.06089499999998793
+    time_per_iteration: 0.06089499999998793
+    iterations_per_second: 16.4217094999622
     iterations_count: 1
   memory:
   - adapter: rexml
@@ -402,127 +469,169 @@ benchmark_result:
   - adapter: ox
     format: xml
     data_size: small
-    time_per_iterations: 3.0000000151630957e-05
-    time_per_iteration: 3.0000000151630956e-06
-    iterations_per_second: 333333.33164854493
+    time_per_iterations: 2.4999999993724487e-05
+    time_per_iteration: 2.4999999993724487e-06
+    iterations_per_second: 400000.0001004082
     iterations_count: 10
   - adapter: nokogiri
     format: xml
     data_size: small
-    time_per_iterations: 0.00010399999973742524
-    time_per_iteration: 1.0399999973742525e-05
-    iterations_per_second: 96153.84639661128
+    time_per_iterations: 8.699999997929808e-05
+    time_per_iteration: 8.699999997929809e-06
+    iterations_per_second: 114942.52876298311
     iterations_count: 10
   - adapter: oga
     format: xml
     data_size: small
-    time_per_iterations: 0.0010240000001431326
-    time_per_iteration: 0.00010240000001431327
-    iterations_per_second: 9765.624998634981
+    time_per_iterations: 0.00112899999999172
+    time_per_iteration: 0.000112899999999172
+    iterations_per_second: 8857.395925662833
     iterations_count: 10
   - adapter: leptris
     format: xml
     data_size: small
-    time_per_iterations: 5.700000019714935e-05
-    time_per_iteration: 5.700000019714935e-06
-    iterations_per_second: 175438.59588442798
+    time_per_iterations: 7.80000000020209e-05
+    time_per_iteration: 7.80000000020209e-06
+    iterations_per_second: 128205.12820180654
     iterations_count: 10
   - adapter: ox
     format: xml
     data_size: medium
-    time_per_iterations: 0.006499000000076194
-    time_per_iteration: 0.002166333333358731
-    iterations_per_second: 461.60947837587753
+    time_per_iterations: 0.007509999999996353
+    time_per_iteration: 0.0025033333333321175
+    iterations_per_second: 399.46737683108614
     iterations_count: 3
   - adapter: nokogiri
     format: xml
     data_size: medium
-    time_per_iterations: 0.008122000000184926
-    time_per_iteration: 0.0027073333333949754
-    iterations_per_second: 369.36715093963244
+    time_per_iterations: 0.011230000000011842
+    time_per_iteration: 0.0037433333333372807
+    iterations_per_second: 267.14158503978956
     iterations_count: 3
   - adapter: oga
     format: xml
     data_size: medium
-    time_per_iterations: 0.27682599999980084
-    time_per_iteration: 0.09227533333326694
-    iterations_per_second: 10.837132350292814
+    time_per_iterations: 0.23449899999999957
+    time_per_iteration: 0.07816633333333319
+    iterations_per_second: 12.7932315276398
     iterations_count: 3
   - adapter: leptris
     format: xml
     data_size: medium
-    time_per_iterations: 0.00196700000014971
-    time_per_iteration: 0.00065566666671657
-    iterations_per_second: 1525.1652261167603
+    time_per_iterations: 0.0018279999999890606
+    time_per_iteration: 0.0006093333333296869
+    iterations_per_second: 1641.13785558969
     iterations_count: 3
   - adapter: ox
     format: xml
     data_size: large
-    time_per_iterations: 0.02887800000007701
-    time_per_iteration: 0.02887800000007701
-    iterations_per_second: 34.62843687226724
+    time_per_iterations: 0.029805000000010295
+    time_per_iteration: 0.029805000000010295
+    iterations_per_second: 33.551417547379785
     iterations_count: 1
   - adapter: nokogiri
     format: xml
     data_size: large
-    time_per_iterations: 0.0613100000000486
-    time_per_iteration: 0.0613100000000486
-    iterations_per_second: 16.31055292773132
+    time_per_iterations: 0.05428200000000061
+    time_per_iteration: 0.05428200000000061
+    iterations_per_second: 18.422313105633336
     iterations_count: 1
   - adapter: oga
     format: xml
     data_size: large
-    time_per_iterations: 1.7737019999999575
-    time_per_iteration: 1.7737019999999575
-    iterations_per_second: 0.5637925649291843
+    time_per_iterations: 1.3865380000000016
+    time_per_iteration: 1.3865380000000016
+    iterations_per_second: 0.7212207671192559
     iterations_count: 1
   - adapter: leptris
     format: xml
     data_size: large
-    time_per_iterations: 0.008480999999846972
-    time_per_iteration: 0.008480999999846972
-    iterations_per_second: 117.91062374932716
+    time_per_iterations: 0.006839999999982638
+    time_per_iteration: 0.006839999999982638
+    iterations_per_second: 146.19883040972783
     iterations_count: 1
   xpath:
+  - adapter: rexml
+    format: xml
+    data_size: small
+    time_per_iterations: 0.0043819999999925585
+    time_per_iteration: 0.00043819999999925583
+    iterations_per_second: 2282.06298494226
+    iterations_count: 10
+  - adapter: nokogiri
+    format: xml
+    data_size: small
+    time_per_iterations: 0.00021300000000223918
+    time_per_iteration: 2.1300000000223918e-05
+    iterations_per_second: 46948.35680701819
+    iterations_count: 10
   - adapter: oga
     format: xml
     data_size: small
-    time_per_iterations: 0.00203300000021045
-    time_per_iteration: 0.00020330000002104497
-    iterations_per_second: 4918.839153450483
+    time_per_iterations: 0.001697000000007165
+    time_per_iteration: 0.0001697000000007165
+    iterations_per_second: 5892.751915119492
     iterations_count: 10
   - adapter: leptris
     format: xml
     data_size: small
-    time_per_iterations: 0.00017900000011650263
-    time_per_iteration: 1.7900000011650262e-05
-    iterations_per_second: 55865.921751349015
+    time_per_iterations: 0.00018900000000598993
+    time_per_iteration: 1.8900000000598993e-05
+    iterations_per_second: 52910.05290837604
     iterations_count: 10
+  - adapter: rexml
+    format: xml
+    data_size: medium
+    time_per_iterations: 1.0126129999999876
+    time_per_iteration: 0.3375376666666625
+    iterations_per_second: 2.9626323185659644
+    iterations_count: 3
+  - adapter: nokogiri
+    format: xml
+    data_size: medium
+    time_per_iterations: 0.012163999999984298
+    time_per_iteration: 0.004054666666661433
+    iterations_per_second: 246.62939822458668
+    iterations_count: 3
   - adapter: oga
     format: xml
     data_size: medium
-    time_per_iterations: 0.5889170000000377
-    time_per_iteration: 0.19630566666667923
-    iterations_per_second: 5.09409645162189
+    time_per_iterations: 0.44069999999999254
+    time_per_iteration: 0.1468999999999975
+    iterations_per_second: 6.807351940095418
     iterations_count: 3
   - adapter: leptris
     format: xml
     data_size: medium
-    time_per_iterations: 0.0037750000001324224
-    time_per_iteration: 0.0012583333333774742
-    iterations_per_second: 794.7019867270897
+    time_per_iterations: 0.003152999999997519
+    time_per_iteration: 0.001050999999999173
+    iterations_per_second: 951.4747859189218
     iterations_count: 3
+  - adapter: rexml
+    format: xml
+    data_size: large
+    time_per_iterations: 6.160685999999998
+    time_per_iteration: 6.160685999999998
+    iterations_per_second: 0.1623195858383304
+    iterations_count: 1
+  - adapter: nokogiri
+    format: xml
+    data_size: large
+    time_per_iterations: 0.10521499999998696
+    time_per_iteration: 0.10521499999998696
+    iterations_per_second: 9.504348239320667
+    iterations_count: 1
   - adapter: oga
     format: xml
     data_size: large
-    time_per_iterations: 2.6624839999999494
-    time_per_iteration: 2.6624839999999494
-    iterations_per_second: 0.3755891115214285
+    time_per_iterations: 2.565148000000022
+    time_per_iteration: 2.565148000000022
+    iterations_per_second: 0.38984105400545754
     iterations_count: 1
   - adapter: leptris
     format: xml
     data_size: large
-    time_per_iterations: 0.01713000000017928
-    time_per_iteration: 0.01713000000017928
-    iterations_per_second: 58.37711616985021
+    time_per_iterations: 0.02035599999999249
+    time_per_iteration: 0.02035599999999249
+    iterations_per_second: 49.125564944014975
     iterations_count: 1
