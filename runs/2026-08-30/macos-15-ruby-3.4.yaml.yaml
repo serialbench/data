@@ -1,0 +1,214 @@
+---
+platform:
+  platform_string: macos-15-ruby-3.4
+  kind: local
+  os: macos
+  arch: arm64
+  ruby_version: '3.4'
+  ruby_build_tag: '3.4'
+metadata:
+  benchmark_config_path: config/benchmarks/full-yaml.yml
+  environment_config_path: config/environments/ci-ruby-3.4.yml
+  tags:
+  - local
+  - macos
+  - arm64
+  - ruby-3.4
+environment_config:
+  name: ci-ruby-3.4-macos-15
+  description: CI environment for Ruby 3.4 on macos-15
+  kind: local
+  created_at: '2026-08-30T04:26:30Z'
+  ruby_build_tag: '3.4'
+benchmark_config:
+  name: full-yaml
+  data_sizes:
+  - small
+  - medium
+  - large
+  formats:
+  - yaml
+  iterations:
+    small: 10
+    medium: 3
+    large: 1
+  warmup: 2
+  operations:
+  - parsing
+  - generation
+  - streaming
+  - memory
+benchmark_result:
+  serializers:
+  - format: xml
+    name: rexml
+    version: 3.4.4
+    features:
+      :xpath: true
+      :namespaces: true
+      :validation: false
+      :streaming: false
+      :stax: false
+  - format: xml
+    name: ox
+    version: 2.14.29
+    features:
+      :xpath: false
+      :namespaces: true
+      :validation: false
+      :streaming: true
+      :stax: false
+  - format: xml
+    name: nokogiri
+    version: 1.19.4
+    features:
+      :xpath: true
+      :namespaces: true
+      :validation: false
+      :streaming: true
+      :stax: true
+  - format: xml
+    name: oga
+    version: '3.5'
+    features:
+      :xpath: true
+      :namespaces: true
+      :validation: false
+      :streaming: true
+      :stax: false
+  - format: xml
+    name: leptris
+    version: 1.9.35
+    features:
+      :xpath: true
+      :namespaces: true
+      :validation: false
+      :streaming: true
+      :stax: true
+  - format: json
+    name: json
+    version: 2.21.2
+    features:
+      :pretty_print: true
+      :streaming: false
+      :symbol_keys: false
+      :custom_types: false
+  - format: json
+    name: oj
+    version: 3.17.6
+    features:
+      :pretty_print: true
+      :streaming: true
+      :symbol_keys: true
+      :custom_types: true
+  - format: json
+    name: rapidjson
+    version: 0.4.0
+    features:
+      :pretty_print: true
+      :streaming: false
+      :symbol_keys: false
+      :custom_types: false
+  - format: json
+    name: yajl
+    version: 1.4.3
+    features:
+      :pretty_print: true
+      :streaming: true
+      :symbol_keys: false
+      :custom_types: false
+  - format: yaml
+    name: psych
+    version: 5.2.2
+    features:
+      :streaming: false
+  - format: toml
+    name: toml-rb
+    version: 4.2.1
+    features:
+      :comments: false
+      :arrays_of_tables: true
+      :inline_tables: true
+      :multiline_strings: true
+  - format: toml
+    name: tomlib
+    version: 0.7.3
+    features:
+      :comments: false
+      :arrays_of_tables: true
+      :inline_tables: true
+      :multiline_strings: true
+  - format: toml
+    name: tomlrb
+    version: 2.0.4
+    features:
+      :comments: false
+      :arrays_of_tables: true
+      :inline_tables: true
+      :multiline_strings: true
+  parsing:
+  - adapter: psych
+    format: yaml
+    data_size: small
+    time_per_iterations: 0.0005920000003243331
+    time_per_iteration: 5.920000003243331e-05
+    iterations_per_second: 16891.8918826375
+    iterations_count: 10
+  - adapter: psych
+    format: yaml
+    data_size: medium
+    time_per_iterations: 0.1796119999999064
+    time_per_iteration: 0.059870666666635465
+    iterations_per_second: 16.702670200218044
+    iterations_count: 3
+  - adapter: psych
+    format: yaml
+    data_size: large
+    time_per_iterations: 0.4835179999990942
+    time_per_iteration: 0.4835179999990942
+    iterations_per_second: 2.068175331635789
+    iterations_count: 1
+  generation:
+  - adapter: psych
+    format: yaml
+    data_size: small
+    time_per_iterations: 0.0039550000001327135
+    time_per_iteration: 0.00039550000001327136
+    iterations_per_second: 2528.4450062362685
+    iterations_count: 10
+  - adapter: psych
+    format: yaml
+    data_size: medium
+    time_per_iterations: 0.21506399999998393
+    time_per_iteration: 0.07168799999999464
+    iterations_per_second: 13.94933601160689
+    iterations_count: 3
+  - adapter: psych
+    format: yaml
+    data_size: large
+    time_per_iterations: 0.8153430000002118
+    time_per_iteration: 0.8153430000002118
+    iterations_per_second: 1.2264776909837214
+    iterations_count: 1
+  memory:
+  - adapter: psych
+    format: yaml
+    data_size: small
+    total_allocated: 1210
+    total_retained: 46
+    allocated_memory: 116800
+    retained_memory: 4960
+  - adapter: psych
+    format: yaml
+    data_size: medium
+    total_allocated: 575101
+    total_retained: 42010
+    allocated_memory: 59356680
+    retained_memory: 4772680
+  - adapter: psych
+    format: yaml
+    data_size: large
+    total_allocated: 6101307
+    total_retained: 520030
+    allocated_memory: 645912760
+    retained_memory: 57292912
