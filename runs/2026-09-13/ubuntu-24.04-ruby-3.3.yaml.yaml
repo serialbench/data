@@ -18,7 +18,7 @@ environment_config:
   name: ci-ruby-3.3-ubuntu-24.04
   description: CI environment for Ruby 3.3 on ubuntu-24.04
   kind: local
-  created_at: '2026-09-13T07:07:18Z'
+  created_at: '2026-09-13T11:19:18Z'
   ruby_build_tag: '3.3'
 benchmark_config:
   name: full-yaml
@@ -78,7 +78,7 @@ benchmark_result:
       stax: false
   - format: xml
     name: leptris
-    version: 1.9.35
+    version: 1.9.152.1
     features:
       xpath: true
       namespaces: true
@@ -117,11 +117,24 @@ benchmark_result:
       streaming: true
       symbol_keys: false
       custom_types: false
+  - format: json
+    name: yeptris-json
+    version: 0.2.0.1
+    features:
+      pretty_print: false
+      streaming: false
+      symbol_keys: false
+      custom_types: false
   - format: yaml
     name: psych
     version: 5.1.2
     features:
       streaming: false
+  - format: yaml
+    name: yeptris-yaml
+    version: 0.2.0.1
+    features:
+      streaming: true
   - format: toml
     name: toml-rb
     version: 4.2.1
@@ -146,49 +159,99 @@ benchmark_result:
       arrays_of_tables: true
       inline_tables: true
       multiline_strings: true
+  - format: toml
+    name: teptris
+    version: 0.1.0
+    features:
+      comments: false
+      arrays_of_tables: true
+      inline_tables: true
+      multiline_strings: true
   parsing:
   - adapter: psych
     format: yaml
     data_size: small
-    time_per_iterations: 0.0012677730000092424
-    time_per_iteration: 0.00012677730000092423
-    iterations_per_second: 7887.847430042363
+    time_per_iterations: 0.0015902450000027102
+    time_per_iteration: 0.00015902450000027102
+    iterations_per_second: 6288.339218160068
+    iterations_count: 10
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: small
+    time_per_iterations: 0.00014169300000332896
+    time_per_iteration: 1.4169300000332896e-05
+    iterations_per_second: 70575.11662372212
     iterations_count: 10
   - adapter: psych
     format: yaml
     data_size: medium
-    time_per_iterations: 0.16546365799999307
-    time_per_iteration: 0.05515455266666436
-    iterations_per_second: 18.13086955928489
+    time_per_iterations: 0.1550839470000085
+    time_per_iteration: 0.05169464900000283
+    iterations_per_second: 19.344361928058458
+    iterations_count: 3
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: medium
+    time_per_iterations: 0.06977951700000062
+    time_per_iteration: 0.02325983900000021
+    iterations_per_second: 42.992558976869574
     iterations_count: 3
   - adapter: psych
     format: yaml
     data_size: large
-    time_per_iterations: 0.6176909349999988
-    time_per_iteration: 0.6176909349999988
-    iterations_per_second: 1.61893261392933
+    time_per_iterations: 0.6180658760000028
+    time_per_iteration: 0.6180658760000028
+    iterations_per_second: 1.617950511152302
+    iterations_count: 1
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: large
+    time_per_iterations: 0.11896040999999968
+    time_per_iteration: 0.11896040999999968
+    iterations_per_second: 8.406157981466293
     iterations_count: 1
   generation:
   - adapter: psych
     format: yaml
     data_size: small
-    time_per_iterations: 0.002232810000009522
-    time_per_iteration: 0.00022328100000095218
-    iterations_per_second: 4478.661417656385
+    time_per_iterations: 0.0018675430000030246
+    time_per_iteration: 0.00018675430000030245
+    iterations_per_second: 5354.629050031943
+    iterations_count: 10
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: small
+    time_per_iterations: 0.0006942949999881876
+    time_per_iteration: 6.942949999881876e-05
+    iterations_per_second: 14403.099547267568
     iterations_count: 10
   - adapter: psych
     format: yaml
     data_size: medium
-    time_per_iterations: 0.34867555900000013
-    time_per_iteration: 0.11622518633333338
-    iterations_per_second: 8.603987066383391
+    time_per_iterations: 0.34332497100000126
+    time_per_iteration: 0.11444165700000042
+    iterations_per_second: 8.73807690498571
+    iterations_count: 3
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: medium
+    time_per_iterations: 0.21821100399999693
+    time_per_iteration: 0.07273700133333232
+    iterations_per_second: 13.748160931425998
     iterations_count: 3
   - adapter: psych
     format: yaml
     data_size: large
-    time_per_iterations: 1.6248223679999967
-    time_per_iteration: 1.6248223679999967
-    iterations_per_second: 0.6154518916617979
+    time_per_iterations: 1.4110649389999992
+    time_per_iteration: 1.4110649389999992
+    iterations_per_second: 0.7086846057621453
+    iterations_count: 1
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: large
+    time_per_iterations: 1.0303749999999923
+    time_per_iteration: 1.0303749999999923
+    iterations_per_second: 0.9705204415868082
     iterations_count: 1
   memory:
   - adapter: psych
@@ -198,6 +261,13 @@ benchmark_result:
     total_retained: 0
     allocated_memory: 119520
     retained_memory: 0
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: small
+    total_allocated: 270
+    total_retained: 0
+    allocated_memory: 20000
+    retained_memory: 0
   - adapter: psych
     format: yaml
     data_size: medium
@@ -205,6 +275,13 @@ benchmark_result:
     total_retained: 42005
     allocated_memory: 59359400
     retained_memory: 4772240
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: medium
+    total_allocated: 312990
+    total_retained: 0
+    allocated_memory: 43748860
+    retained_memory: 0
   - adapter: psych
     format: yaml
     data_size: large
@@ -212,3 +289,32 @@ benchmark_result:
     total_retained: 520025
     allocated_memory: 64592160
     retained_memory: 57292472
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: large
+    total_allocated: 330019
+    total_retained: 0
+    allocated_memory: 19902175
+    retained_memory: 0
+  streaming:
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: small
+    time_per_iterations: 0.00016954499999144446
+    time_per_iteration: 1.6954499999144444e-05
+    iterations_per_second: 58981.39137399875
+    iterations_count: 10
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: medium
+    time_per_iterations: 0.0701708200000013
+    time_per_iteration: 0.023390273333333766
+    iterations_per_second: 42.752813776437904
+    iterations_count: 3
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: large
+    time_per_iterations: 0.11705063400000881
+    time_per_iteration: 0.11705063400000881
+    iterations_per_second: 8.543311264763629
+    iterations_count: 1
