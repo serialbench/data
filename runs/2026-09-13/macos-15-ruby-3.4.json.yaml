@@ -18,7 +18,7 @@ environment_config:
   name: ci-ruby-3.4-macos-15
   description: CI environment for Ruby 3.4 on macos-15
   kind: local
-  created_at: '2026-09-13T07:26:33Z'
+  created_at: '2026-09-13T11:35:54Z'
   ruby_build_tag: '3.4'
 benchmark_config:
   name: full-json
@@ -78,7 +78,7 @@ benchmark_result:
       stax: false
   - format: xml
     name: leptris
-    version: 1.9.35
+    version: 1.9.152.1
     features:
       xpath: true
       namespaces: true
@@ -117,11 +117,24 @@ benchmark_result:
       streaming: true
       symbol_keys: false
       custom_types: false
+  - format: json
+    name: yeptris-json
+    version: 0.2.0.1
+    features:
+      pretty_print: false
+      streaming: false
+      symbol_keys: false
+      custom_types: false
   - format: yaml
     name: psych
     version: 5.2.2
     features:
       streaming: false
+  - format: yaml
+    name: yeptris-yaml
+    version: 0.2.0.1
+    features:
+      streaming: true
   - format: toml
     name: toml-rb
     version: 4.2.1
@@ -146,175 +159,204 @@ benchmark_result:
       arrays_of_tables: true
       inline_tables: true
       multiline_strings: true
+  - format: toml
+    name: teptris
+    version: 0.1.0
+    features:
+      comments: false
+      arrays_of_tables: true
+      inline_tables: true
+      multiline_strings: true
   parsing:
   - adapter: json
+    format: json
+    data_size: small
+    time_per_iterations: 2.600000001962144e-05
+    time_per_iteration: 2.600000001962144e-06
+    iterations_per_second: 384615.38432512665
+    iterations_count: 10
+  - adapter: oj
     format: json
     data_size: small
     time_per_iterations: 1.900000000887303e-05
     time_per_iteration: 1.900000000887303e-06
     iterations_per_second: 526315.7892278939
     iterations_count: 10
-  - adapter: oj
-    format: json
-    data_size: small
-    time_per_iterations: 2.1000000003823516e-05
-    time_per_iteration: 2.1000000003823517e-06
-    iterations_per_second: 476190.47610377515
-    iterations_count: 10
   - adapter: rapidjson
     format: json
     data_size: small
-    time_per_iterations: 1.799999995455437e-05
-    time_per_iteration: 1.799999995455437e-06
-    iterations_per_second: 555555.5569581985
+    time_per_iterations: 1.7999999982976078e-05
+    time_per_iteration: 1.799999998297608e-06
+    iterations_per_second: 555555.5560809852
     iterations_count: 10
   - adapter: yajl
     format: json
     data_size: small
-    time_per_iterations: 3.90000000152213e-05
-    time_per_iteration: 3.90000000152213e-06
-    iterations_per_second: 256410.2563101821
+    time_per_iterations: 3.8999999986799594e-05
+    time_per_iteration: 3.899999998679959e-06
+    iterations_per_second: 256410.2564970441
+    iterations_count: 10
+  - adapter: yeptris-json
+    format: json
+    data_size: small
+    time_per_iterations: 2.2999999998774e-05
+    time_per_iteration: 2.2999999998774e-06
+    iterations_per_second: 434782.60871882795
     iterations_count: 10
   - adapter: json
     format: json
     data_size: medium
-    time_per_iterations: 0.001898999999980333
-    time_per_iteration: 0.0006329999999934444
-    iterations_per_second: 1579.778830980026
+    time_per_iterations: 0.0016820000000166146
+    time_per_iteration: 0.0005606666666722049
+    iterations_per_second: 1783.590963121502
     iterations_count: 3
   - adapter: oj
     format: json
     data_size: medium
-    time_per_iterations: 0.003921999999988657
-    time_per_iteration: 0.0013073333333295523
-    iterations_per_second: 764.9158592576941
+    time_per_iterations: 0.0038099999999872125
+    time_per_iteration: 0.0012699999999957374
+    iterations_per_second: 787.4015748057924
     iterations_count: 3
   - adapter: rapidjson
     format: json
     data_size: medium
-    time_per_iterations: 0.0034769999999753054
-    time_per_iteration: 0.0011589999999917684
-    iterations_per_second: 862.8127696351185
+    time_per_iterations: 0.0036680000000046675
+    time_per_iteration: 0.0012226666666682224
+    iterations_per_second: 817.8844056696245
     iterations_count: 3
   - adapter: yajl
     format: json
     data_size: medium
-    time_per_iterations: 0.007703000000049087
-    time_per_iteration: 0.0025676666666830292
-    iterations_per_second: 389.4586524705806
+    time_per_iterations: 0.008673999999984972
+    time_per_iteration: 0.002891333333328324
+    iterations_per_second: 345.86119437459047
+    iterations_count: 3
+  - adapter: yeptris-json
+    format: json
+    data_size: medium
+    time_per_iterations: 0.003241000000002714
+    time_per_iteration: 0.001080333333334238
+    iterations_per_second: 925.640234494751
     iterations_count: 3
   - adapter: json
     format: json
     data_size: large
-    time_per_iterations: 0.005814000000043507
-    time_per_iteration: 0.005814000000043507
-    iterations_per_second: 171.99862400972083
+    time_per_iterations: 0.009267999999991616
+    time_per_iteration: 0.009267999999991616
+    iterations_per_second: 107.89814415201819
     iterations_count: 1
   - adapter: oj
     format: json
     data_size: large
-    time_per_iterations: 0.013011000000005879
-    time_per_iteration: 0.013011000000005879
-    iterations_per_second: 76.85804319418554
+    time_per_iterations: 0.01576600000001349
+    time_per_iteration: 0.01576600000001349
+    iterations_per_second: 63.42762907517089
     iterations_count: 1
   - adapter: rapidjson
     format: json
     data_size: large
-    time_per_iterations: 0.016825999999980468
-    time_per_iteration: 0.016825999999980468
-    iterations_per_second: 59.431831689121644
+    time_per_iterations: 0.014437000000015132
+    time_per_iteration: 0.014437000000015132
+    iterations_per_second: 69.26646810271883
     iterations_count: 1
   - adapter: yajl
     format: json
     data_size: large
-    time_per_iterations: 0.040437999999994645
-    time_per_iteration: 0.040437999999994645
-    iterations_per_second: 24.729215094716167
+    time_per_iterations: 0.03733000000002562
+    time_per_iteration: 0.03733000000002562
+    iterations_per_second: 26.788106080881693
+    iterations_count: 1
+  - adapter: yeptris-json
+    format: json
+    data_size: large
+    time_per_iterations: 0.014422999999993635
+    time_per_iteration: 0.014422999999993635
+    iterations_per_second: 69.33370311311387
     iterations_count: 1
   generation:
   - adapter: json
     format: json
     data_size: small
-    time_per_iterations: 3.000000003794412e-05
-    time_per_iteration: 3.000000003794412e-06
-    iterations_per_second: 333333.332911732
+    time_per_iterations: 3.499999999689862e-05
+    time_per_iteration: 3.4999999996898622e-06
+    iterations_per_second: 285714.2857396031
     iterations_count: 10
   - adapter: oj
     format: json
     data_size: small
-    time_per_iterations: 3.2000000032894604e-05
-    time_per_iteration: 3.2000000032894604e-06
-    iterations_per_second: 312499.9996787636
+    time_per_iterations: 2.9000000012047167e-05
+    time_per_iteration: 2.9000000012047165e-06
+    iterations_per_second: 344827.58606364846
     iterations_count: 10
   - adapter: rapidjson
     format: json
     data_size: small
-    time_per_iterations: 3.399999997100167e-05
-    time_per_iteration: 3.399999997100167e-06
-    iterations_per_second: 294117.6473096741
+    time_per_iterations: 3.000000000952241e-05
+    time_per_iteration: 3.000000000952241e-06
+    iterations_per_second: 333333.3332275288
     iterations_count: 10
   - adapter: yajl
     format: json
     data_size: small
-    time_per_iterations: 0.00016800000003058813
-    time_per_iteration: 1.6800000003058814e-05
-    iterations_per_second: 59523.80951297189
+    time_per_iterations: 6.799999999884676e-05
+    time_per_iteration: 6.799999999884676e-06
+    iterations_per_second: 147058.8235319058
     iterations_count: 10
   - adapter: json
     format: json
     data_size: medium
-    time_per_iterations: 0.0028679999999781103
-    time_per_iteration: 0.0009559999999927035
-    iterations_per_second: 1046.025104610494
+    time_per_iterations: 0.002282000000008111
+    time_per_iteration: 0.0007606666666693703
+    iterations_per_second: 1314.6362839567648
     iterations_count: 3
   - adapter: oj
     format: json
     data_size: medium
-    time_per_iterations: 0.0072460000000091895
-    time_per_iteration: 0.0024153333333363967
-    iterations_per_second: 414.0215291189891
+    time_per_iterations: 0.00486799999998766
+    time_per_iteration: 0.0016226666666625533
+    iterations_per_second: 616.269515202877
     iterations_count: 3
   - adapter: rapidjson
     format: json
     data_size: medium
-    time_per_iterations: 0.004551999999989675
-    time_per_iteration: 0.0015173333333298917
-    iterations_per_second: 659.0509666095792
+    time_per_iterations: 0.004975000000001728
+    time_per_iteration: 0.0016583333333339094
+    iterations_per_second: 603.015075376675
     iterations_count: 3
   - adapter: yajl
     format: json
     data_size: medium
-    time_per_iterations: 0.02491400000002386
-    time_per_iteration: 0.00830466666667462
-    iterations_per_second: 120.41422493365685
+    time_per_iterations: 0.011293999999992366
+    time_per_iteration: 0.0037646666666641218
+    iterations_per_second: 265.62776695608534
     iterations_count: 3
   - adapter: json
     format: json
     data_size: large
-    time_per_iterations: 0.014489999999966585
-    time_per_iteration: 0.014489999999966585
-    iterations_per_second: 69.01311249153251
+    time_per_iterations: 0.018983000000019956
+    time_per_iteration: 0.018983000000019956
+    iterations_per_second: 52.678712532210334
     iterations_count: 1
   - adapter: oj
     format: json
     data_size: large
-    time_per_iterations: 0.03017299999999068
-    time_per_iteration: 0.03017299999999068
-    iterations_per_second: 33.1422132370102
+    time_per_iterations: 0.022114000000016176
+    time_per_iteration: 0.022114000000016176
+    iterations_per_second: 45.22022248346154
     iterations_count: 1
   - adapter: rapidjson
     format: json
     data_size: large
-    time_per_iterations: 0.02306399999997666
-    time_per_iteration: 0.02306399999997666
-    iterations_per_second: 43.357613596991506
+    time_per_iterations: 0.024161999999989803
+    time_per_iteration: 0.024161999999989803
+    iterations_per_second: 41.38730237564862
     iterations_count: 1
   - adapter: yajl
     format: json
     data_size: large
-    time_per_iterations: 0.045366999999998825
-    time_per_iteration: 0.045366999999998825
-    iterations_per_second: 22.0424537659538
+    time_per_iterations: 0.04137499999998795
+    time_per_iteration: 0.04137499999998795
+    iterations_per_second: 24.16918429003725
     iterations_count: 1
   memory:
   - adapter: json
@@ -345,6 +387,13 @@ benchmark_result:
     total_retained: 0
     allocated_memory: 15600
     retained_memory: 0
+  - adapter: yeptris-json
+    format: json
+    data_size: small
+    total_allocated: 190
+    total_retained: 0
+    allocated_memory: 12400
+    retained_memory: 0
   - adapter: json
     format: json
     data_size: medium
@@ -372,6 +421,13 @@ benchmark_result:
     total_allocated: 180075
     total_retained: 0
     allocated_memory: 11724040
+    retained_memory: 0
+  - adapter: yeptris-json
+    format: json
+    data_size: medium
+    total_allocated: 70160
+    total_retained: 0
+    allocated_memory: 7297600
     retained_memory: 0
   - adapter: json
     format: json
@@ -401,46 +457,53 @@ benchmark_result:
     total_retained: 0
     allocated_memory: 13691216
     retained_memory: 0
+  - adapter: yeptris-json
+    format: json
+    data_size: large
+    total_allocated: 130125
+    total_retained: 0
+    allocated_memory: 9707640
+    retained_memory: 0
   streaming:
   - adapter: oj
     format: json
     data_size: small
-    time_per_iterations: 3.69999999634274e-05
-    time_per_iteration: 3.6999999963427397e-06
-    iterations_per_second: 270270.27053741855
+    time_per_iterations: 4.3000000005122274e-05
+    time_per_iteration: 4.300000000512227e-06
+    iterations_per_second: 232558.13950718078
     iterations_count: 10
   - adapter: yajl
     format: json
     data_size: small
-    time_per_iterations: 3.90000000152213e-05
-    time_per_iteration: 3.90000000152213e-06
-    iterations_per_second: 256410.2563101821
+    time_per_iterations: 3.799999998932435e-05
+    time_per_iteration: 3.7999999989324353e-06
+    iterations_per_second: 263157.8948107732
     iterations_count: 10
   - adapter: oj
     format: json
     data_size: medium
-    time_per_iterations: 0.007425000000012005
-    time_per_iteration: 0.0024750000000040018
-    iterations_per_second: 404.04040403975074
+    time_per_iterations: 0.007280000000008613
+    time_per_iteration: 0.0024266666666695378
+    iterations_per_second: 412.08791208742457
     iterations_count: 3
   - adapter: yajl
     format: json
     data_size: medium
-    time_per_iterations: 0.007041000000015174
-    time_per_iteration: 0.002347000000005058
-    iterations_per_second: 426.0758414988687
+    time_per_iterations: 0.00717399999999202
+    time_per_iteration: 0.0023913333333306732
+    iterations_per_second: 418.17674937320004
     iterations_count: 3
   - adapter: oj
     format: json
     data_size: large
-    time_per_iterations: 0.03513199999997596
-    time_per_iteration: 0.03513199999997596
-    iterations_per_second: 28.46407833316305
+    time_per_iterations: 0.033243999999996277
+    time_per_iteration: 0.033243999999996277
+    iterations_per_second: 30.080616051020094
     iterations_count: 1
   - adapter: yajl
     format: json
     data_size: large
-    time_per_iterations: 0.03352399999999989
-    time_per_iteration: 0.03352399999999989
-    iterations_per_second: 29.82937596945482
+    time_per_iterations: 0.05506900000000314
+    time_per_iteration: 0.05506900000000314
+    iterations_per_second: 18.15903684468472
     iterations_count: 1
