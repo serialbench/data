@@ -1,0 +1,39 @@
+platform:
+  platform_string: macos-15-c-native
+  kind: native
+  os: macos
+  arch: arm64
+  runtime: c
+  runtime_version: gcc
+benchmark_config:
+  name: c-full-xml
+  formats: [xml]
+  operations: [parsing]
+  serializers:
+    - name: libxml2
+      format: xml
+      version: 2.15.4
+      features: {xpath: true, namespaces: true}
+benchmark_result:
+  parsing:
+    - adapter: libxml2
+      format: xml
+      data_size: small
+      time_per_iterations: 0.000105000
+      time_per_iteration: 0.000010500
+      iterations_per_second: 95238.095247
+      iterations_count: 10
+    - adapter: libxml2
+      format: xml
+      data_size: medium
+      time_per_iterations: 0.016834000
+      time_per_iteration: 0.005611333
+      iterations_per_second: 178.210764
+      iterations_count: 3
+    - adapter: libxml2
+      format: xml
+      data_size: large
+      time_per_iterations: 0.067863000
+      time_per_iteration: 0.067863000
+      iterations_per_second: 14.735570
+      iterations_count: 1
