@@ -1,0 +1,39 @@
+platform:
+  platform_string: ubuntu-24.04-arm-c-native
+  kind: native
+  os: linux
+  arch: arm64
+  runtime: c
+  runtime_version: clang
+benchmark_config:
+  name: c-full-xml
+  formats: [xml]
+  operations: [parsing]
+  serializers:
+    - name: libxml2
+      format: xml
+      version: 2.9.14
+      features: {xpath: true, namespaces: true}
+benchmark_result:
+  parsing:
+    - adapter: libxml2
+      format: xml
+      data_size: small
+      time_per_iterations: 0.000056693
+      time_per_iteration: 0.000005669
+      iterations_per_second: 176388.619436
+      iterations_count: 10
+    - adapter: libxml2
+      format: xml
+      data_size: medium
+      time_per_iterations: 0.008007502
+      time_per_iteration: 0.002669167
+      iterations_per_second: 374.648673
+      iterations_count: 3
+    - adapter: libxml2
+      format: xml
+      data_size: large
+      time_per_iterations: 0.042690480
+      time_per_iteration: 0.042690480
+      iterations_per_second: 23.424426
+      iterations_count: 1
