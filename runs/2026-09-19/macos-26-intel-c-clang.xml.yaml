@@ -1,0 +1,24 @@
+platform:
+  platform_string: macos-26-intel-c-native
+  kind: native
+  os: macos
+  arch: x86_64
+  runtime: c
+  runtime_version: clang
+benchmark_config:
+  name: c-full
+  formats: [xml, html, json, yaml, toml]
+  operations: [parsing, xslt]
+serializers:
+    - {name: libxml2, format: xml, version: '2.15.3', features: {xpath: true}}
+    - {name: libxslt, format: xml, version: '1.1.35', features: {xslt: true}}
+    - {name: jansson, format: json, version: '2.15.1', features: {}}
+    - {name: nlohmann-json, format: json, version: '3.x', features: {}}
+    - {name: rapidyaml, format: yaml, version: '0.7', features: {}}
+    - {name: libyaml, format: yaml, version: '0.2.5', features: {}}
+benchmark_result:
+  parsing:
+    - {adapter: libxml2, format: xml, data_size: small, time_per_iteration: 0.000009300, iterations_per_second: 107526.881729}
+    - {adapter: libxml2, format: xml, data_size: medium, time_per_iteration: 0.005417667, iterations_per_second: 184.581308}
+    - {adapter: libxml2, format: xml, data_size: large, time_per_iteration: 0.082924000, iterations_per_second: 12.059235}
+  xslt:
