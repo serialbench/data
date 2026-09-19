@@ -1,0 +1,33 @@
+platform:
+  platform_string: ubuntu-24.04-arm-c-native
+  kind: native
+  os: linux
+  arch: arm64
+  runtime: c
+  runtime_version: gcc
+benchmark_config:
+  name: c-full
+  formats: [xml, html, json, yaml, toml]
+  operations: [parsing, xslt]
+serializers:
+    - {name: libxml2, format: xml, version: '2.9.14', features: {xpath: true}}
+    - {name: libxslt, format: xml, version: '1.1.39', features: {xslt: true}}
+    - {name: jansson, format: json, version: '2.14', features: {}}
+    - {name: nlohmann-json, format: json, version: '3.x', features: {}}
+    - {name: rapidyaml, format: yaml, version: '0.7', features: {}}
+    - {name: tomlc17, format: toml, version: '0.x', features: {}}
+    - {name: libyaml, format: yaml, version: '0.2.5', features: {}}
+    - {name: json-c, format: json, version: '0.17', features: {}}
+    - {name: nlohmann-json, format: json, version: '3.x', features: {}}
+benchmark_result:
+  parsing:
+    - {adapter: jansson, format: json, data_size: small, time_per_iteration: 0.000002778, iterations_per_second: 359919.378102}
+    - {adapter: jansson, format: json, data_size: medium, time_per_iteration: 0.003399491, iterations_per_second: 294.161656}
+    - {adapter: jansson, format: json, data_size: large, time_per_iteration: 0.044257694, iterations_per_second: 22.594941}
+    - {adapter: json-c, format: json, data_size: small, time_per_iteration: 0.000002597, iterations_per_second: 385074.511823}
+    - {adapter: json-c, format: json, data_size: medium, time_per_iteration: 0.002456339, iterations_per_second: 407.109931}
+    - {adapter: json-c, format: json, data_size: large, time_per_iteration: 0.037654629, iterations_per_second: 26.557160}
+    - {adapter: nlohmann-json, format: json, data_size: small, time_per_iteration: 0.000002030, iterations_per_second: 492513.790311}
+    - {adapter: nlohmann-json, format: json, data_size: medium, time_per_iteration: 0.002444859, iterations_per_second: 409.021599}
+    - {adapter: nlohmann-json, format: json, data_size: large, time_per_iteration: 0.032133631, iterations_per_second: 31.120044}
+  xslt:
