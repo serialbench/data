@@ -1,0 +1,32 @@
+platform:
+  platform_string: macos-15-c-native
+  kind: native
+  os: macos
+  arch: arm64
+  runtime: c
+  runtime_version: clang
+benchmark_config:
+  name: c-full
+  formats: [xml, html, json, yaml, toml]
+  operations: [parsing, xslt]
+serializers:
+    - {name: leptris, format: xml, version: '1.9.203', features: {xpath: true, html5: true, xslt: true}}
+    - {name: libxml2, format: xml, version: '2.15.4', features: {xpath: true}}
+    - {name: libxslt, format: xml, version: '1.1.35', features: {xslt: true}}
+    - {name: yeptris, format: json, version: '0.6.7', features: {}}
+    - {name: yeptris, format: yaml, version: '0.6.7', features: {}}
+    - {name: jansson, format: json, version: '2.15.1', features: {}}
+    - {name: nlohmann-json, format: json, version: '3.x', features: {}}
+    - {name: rapidyaml, format: yaml, version: '0.7', features: {}}
+    - {name: tomlc17, format: toml, version: '0.x', features: {}}
+    - {name: libyaml, format: yaml, version: '0.2.5', features: {}}
+    - {name: teptris, format: toml, version: '0.1.24', features: {}}
+benchmark_result:
+  parsing:
+    - {adapter: teptris, format: toml, data_size: small, time_per_iteration: 0.000000600, iterations_per_second: 1666666.662980}
+    - {adapter: tomlc17, format: toml, data_size: small, time_per_iteration: 0.000001900, iterations_per_second: 526315.789228}
+    - {adapter: teptris, format: toml, data_size: medium, time_per_iteration: 0.000049667, iterations_per_second: 20134.228189}
+    - {adapter: tomlc17, format: toml, data_size: medium, time_per_iteration: 0.000210333, iterations_per_second: 4754.358162}
+    - {adapter: teptris, format: toml, data_size: large, time_per_iteration: 0.000680000, iterations_per_second: 1470.588235}
+    - {adapter: tomlc17, format: toml, data_size: large, time_per_iteration: 0.002074000, iterations_per_second: 482.160077}
+  xslt:
