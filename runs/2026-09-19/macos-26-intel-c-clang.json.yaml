@@ -1,0 +1,32 @@
+platform:
+  platform_string: macos-26-intel-c-native
+  kind: native
+  os: macos
+  arch: x86_64
+  runtime: c
+  runtime_version: clang
+benchmark_config:
+  name: c-full
+  formats: [xml, html, json, yaml, toml]
+  operations: [parsing, xslt]
+serializers:
+    - {name: libxml2, format: xml, version: '2.15.3', features: {xpath: true}}
+    - {name: libxslt, format: xml, version: '1.1.35', features: {xslt: true}}
+    - {name: jansson, format: json, version: '2.15.1', features: {}}
+    - {name: nlohmann-json, format: json, version: '3.x', features: {}}
+    - {name: rapidyaml, format: yaml, version: '0.7', features: {}}
+    - {name: libyaml, format: yaml, version: '0.2.5', features: {}}
+    - {name: json-c, format: json, version: '0.19', features: {}}
+    - {name: nlohmann-json, format: json, version: '3.x', features: {}}
+benchmark_result:
+  parsing:
+    - {adapter: jansson, format: json, data_size: small, time_per_iteration: 0.000007100, iterations_per_second: 140845.070440}
+    - {adapter: jansson, format: json, data_size: medium, time_per_iteration: 0.009548333, iterations_per_second: 104.730319}
+    - {adapter: jansson, format: json, data_size: large, time_per_iteration: 0.112547000, iterations_per_second: 8.885177}
+    - {adapter: json-c, format: json, data_size: small, time_per_iteration: 0.000007400, iterations_per_second: 135135.135165}
+    - {adapter: json-c, format: json, data_size: medium, time_per_iteration: 0.007529333, iterations_per_second: 132.813883}
+    - {adapter: json-c, format: json, data_size: large, time_per_iteration: 0.093531000, iterations_per_second: 10.691642}
+    - {adapter: nlohmann-json, format: json, data_size: small, time_per_iteration: 0.000005339, iterations_per_second: 187293.976682}
+    - {adapter: nlohmann-json, format: json, data_size: medium, time_per_iteration: 0.005615662, iterations_per_second: 178.073385}
+    - {adapter: nlohmann-json, format: json, data_size: large, time_per_iteration: 0.078687753, iterations_per_second: 12.708458}
+  xslt:
