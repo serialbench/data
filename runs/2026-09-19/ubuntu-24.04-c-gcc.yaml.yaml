@@ -1,0 +1,29 @@
+platform:
+  platform_string: ubuntu-24.04-c-native
+  kind: native
+  os: linux
+  arch: x86_64
+  runtime: c
+  runtime_version: gcc
+benchmark_config:
+  name: c-full
+  formats: [xml, html, json, yaml, toml]
+  operations: [parsing, xslt]
+serializers:
+    - {name: libxml2, format: xml, version: '2.9.14', features: {xpath: true}}
+    - {name: libxslt, format: xml, version: '1.1.39', features: {xslt: true}}
+    - {name: jansson, format: json, version: '2.14', features: {}}
+    - {name: nlohmann-json, format: json, version: '3.x', features: {}}
+    - {name: rapidyaml, format: yaml, version: '0.7', features: {}}
+    - {name: tomlc17, format: toml, version: '0.x', features: {}}
+    - {name: libyaml, format: yaml, version: '0.2.5', features: {}}
+    - {name: rapidyaml, format: yaml, version: '0.7', features: {}}
+benchmark_result:
+  parsing:
+    - {adapter: libyaml, format: yaml, data_size: small, time_per_iteration: 0.000004961, iterations_per_second: 201560.074974}
+    - {adapter: libyaml, format: yaml, data_size: medium, time_per_iteration: 0.002934605, iterations_per_second: 340.761363}
+    - {adapter: libyaml, format: yaml, data_size: large, time_per_iteration: 0.036515432, iterations_per_second: 27.385682}
+    - {adapter: rapidyaml, format: yaml, data_size: small, time_per_iteration: 0.000000963, iterations_per_second: 1038421.599830}
+    - {adapter: rapidyaml, format: yaml, data_size: medium, time_per_iteration: 0.000897375, iterations_per_second: 1114.360918}
+    - {adapter: rapidyaml, format: yaml, data_size: large, time_per_iteration: 0.020290389, iterations_per_second: 49.284417}
+  xslt:
