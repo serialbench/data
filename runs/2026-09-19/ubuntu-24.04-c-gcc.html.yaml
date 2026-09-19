@@ -10,16 +10,23 @@ benchmark_config:
   formats: [xml, html, json, yaml, toml]
   operations: [parsing, xslt]
 serializers:
+    - {name: leptris, format: xml, version: 'native', features: {xpath: true, html5: true, xslt: true}}
     - {name: libxml2, format: xml, version: '2.9.14', features: {xpath: true}}
     - {name: libxslt, format: xml, version: '1.1.39', features: {xslt: true}}
+    - {name: yeptris, format: json, version: 'native', features: {}}
+    - {name: yeptris, format: yaml, version: 'native', features: {}}
     - {name: jansson, format: json, version: '2.14', features: {}}
     - {name: nlohmann-json, format: json, version: '3.x', features: {}}
     - {name: rapidyaml, format: yaml, version: '0.7', features: {}}
     - {name: tomlc17, format: toml, version: '0.x', features: {}}
     - {name: libyaml, format: yaml, version: '0.2.5', features: {}}
+    - {name: teptris, format: toml, version: 'native', features: {}}
 benchmark_result:
   parsing:
-    - {adapter: libxml2, format: html, data_size: small, time_per_iteration: 0.000006195, iterations_per_second: 161430.923664}
-    - {adapter: libxml2, format: html, data_size: medium, time_per_iteration: 0.001443508, iterations_per_second: 692.756652}
-    - {adapter: libxml2, format: html, data_size: large, time_per_iteration: 0.014203404, iterations_per_second: 70.405658}
+    - {adapter: leptris, format: html, data_size: small, time_per_iteration: 0.000006976, iterations_per_second: 143350.678739}
+    - {adapter: libxml2, format: html, data_size: small, time_per_iteration: 0.000005727, iterations_per_second: 174620.636702}
+    - {adapter: leptris, format: html, data_size: medium, time_per_iteration: 0.006903029, iterations_per_second: 144.863936}
+    - {adapter: libxml2, format: html, data_size: medium, time_per_iteration: 0.001389507, iterations_per_second: 719.679541}
+    - {adapter: leptris, format: html, data_size: large, time_per_iteration: 0.165388026, iterations_per_second: 6.046387}
+    - {adapter: libxml2, format: html, data_size: large, time_per_iteration: 0.014204878, iterations_per_second: 70.398352}
   xslt:
