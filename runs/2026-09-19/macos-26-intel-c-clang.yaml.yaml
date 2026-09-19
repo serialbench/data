@@ -1,0 +1,28 @@
+platform:
+  platform_string: macos-26-intel-c-native
+  kind: native
+  os: macos
+  arch: x86_64
+  runtime: c
+  runtime_version: clang
+benchmark_config:
+  name: c-full
+  formats: [xml, html, json, yaml, toml]
+  operations: [parsing, xslt]
+serializers:
+    - {name: libxml2, format: xml, version: '2.15.3', features: {xpath: true}}
+    - {name: libxslt, format: xml, version: '1.1.35', features: {xslt: true}}
+    - {name: jansson, format: json, version: '2.15.1', features: {}}
+    - {name: nlohmann-json, format: json, version: '3.x', features: {}}
+    - {name: rapidyaml, format: yaml, version: '0.7', features: {}}
+    - {name: libyaml, format: yaml, version: '0.2.5', features: {}}
+    - {name: rapidyaml, format: yaml, version: '0.7', features: {}}
+benchmark_result:
+  parsing:
+    - {adapter: libyaml, format: yaml, data_size: small, time_per_iteration: 0.000010100, iterations_per_second: 99009.900961}
+    - {adapter: libyaml, format: yaml, data_size: medium, time_per_iteration: 0.008807000, iterations_per_second: 113.546043}
+    - {adapter: libyaml, format: yaml, data_size: large, time_per_iteration: 0.128038000, iterations_per_second: 7.810181}
+    - {adapter: rapidyaml, format: yaml, data_size: small, time_per_iteration: 0.000001508, iterations_per_second: 663217.933857}
+    - {adapter: rapidyaml, format: yaml, data_size: medium, time_per_iteration: 0.001650326, iterations_per_second: 605.941009}
+    - {adapter: rapidyaml, format: yaml, data_size: large, time_per_iteration: 0.052666100, iterations_per_second: 18.987546}
+  xslt:
