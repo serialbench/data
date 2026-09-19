@@ -1,0 +1,24 @@
+platform:
+  platform_string: ubuntu-22.04-c-native
+  kind: native
+  os: linux
+  arch: x86_64
+  runtime: c
+  runtime_version: clang
+benchmark_config:
+  name: c-full
+  formats: [xml, html, json, yaml, toml]
+  operations: [parsing, xslt]
+serializers:
+    - {name: libxml2, format: xml, version: '2.9.13', features: {xpath: true}}
+    - {name: libxslt, format: xml, version: '1.1.34', features: {xslt: true}}
+    - {name: jansson, format: json, version: '2.13.1', features: {}}
+    - {name: nlohmann-json, format: json, version: '3.x', features: {}}
+    - {name: rapidyaml, format: yaml, version: '0.7', features: {}}
+    - {name: libyaml, format: yaml, version: '0.2.2', features: {}}
+benchmark_result:
+  parsing:
+    - {adapter: libxml2, format: xml, data_size: small, time_per_iteration: 0.000005870, iterations_per_second: 170360.653441}
+    - {adapter: libxml2, format: xml, data_size: medium, time_per_iteration: 0.003020843, iterations_per_second: 331.033423}
+    - {adapter: libxml2, format: xml, data_size: large, time_per_iteration: 0.065359816, iterations_per_second: 15.299921}
+  xslt:
