@@ -1,0 +1,36 @@
+platform:
+  platform_string: macos-15-c-native
+  kind: native
+  os: macos
+  arch: arm64
+  runtime: c
+  runtime_version: clang
+benchmark_config:
+  name: c-full
+  formats: [xml, html, json, yaml, toml]
+  operations: [parsing, xslt]
+serializers:
+    - {name: leptris, format: xml, version: '1.9.203', features: {xpath: true, html5: true, xslt: true}}
+    - {name: libxml2, format: xml, version: '2.15.4', features: {xpath: true}}
+    - {name: libxslt, format: xml, version: '1.1.35', features: {xslt: true}}
+    - {name: yeptris, format: json, version: '0.6.7', features: {}}
+    - {name: yeptris, format: yaml, version: '0.6.7', features: {}}
+    - {name: jansson, format: json, version: '2.15.1', features: {}}
+    - {name: nlohmann-json, format: json, version: '3.x', features: {}}
+    - {name: rapidyaml, format: yaml, version: '0.7', features: {}}
+    - {name: tomlc17, format: toml, version: '0.x', features: {}}
+    - {name: libyaml, format: yaml, version: '0.2.5', features: {}}
+    - {name: teptris, format: toml, version: '0.1.24', features: {}}
+    - {name: rapidyaml, format: yaml, version: '0.7', features: {}}
+benchmark_result:
+  parsing:
+    - {adapter: yeptris, format: yaml, data_size: small, time_per_iteration: 0.000010800, iterations_per_second: 92592.592583}
+    - {adapter: libyaml, format: yaml, data_size: small, time_per_iteration: 0.000011400, iterations_per_second: 87719.298248}
+    - {adapter: yeptris, format: yaml, data_size: medium, time_per_iteration: 0.002526000, iterations_per_second: 395.882819}
+    - {adapter: libyaml, format: yaml, data_size: medium, time_per_iteration: 0.004997667, iterations_per_second: 200.093377}
+    - {adapter: yeptris, format: yaml, data_size: large, time_per_iteration: 0.016136000, iterations_per_second: 61.973228}
+    - {adapter: libyaml, format: yaml, data_size: large, time_per_iteration: 0.043115000, iterations_per_second: 23.193784}
+    - {adapter: rapidyaml, format: yaml, data_size: small, time_per_iteration: 0.000000917, iterations_per_second: 1090869.422721}
+    - {adapter: rapidyaml, format: yaml, data_size: medium, time_per_iteration: 0.001007556, iterations_per_second: 992.500993}
+    - {adapter: rapidyaml, format: yaml, data_size: large, time_per_iteration: 0.016222583, iterations_per_second: 61.642465}
+  xslt:
