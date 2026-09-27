@@ -1,0 +1,61 @@
+platform:
+  platform_string: macos-15-c-native
+  kind: native
+  os: macos
+  arch: arm64
+  runtime: c
+  runtime_version: clang
+benchmark_config:
+  name: c-full
+  formats: [xml, html, json, yaml, toml]
+  operations: [parsing, xslt]
+serializers:
+    - {name: leptris, format: xml, version: '1.9.260', features: {xpath: true, html5: true, xslt: true}}
+    - {name: libxml2, format: xml, version: '2.15.4', features: {xpath: true}}
+    - {name: libxslt, format: xml, version: '1.1.35', features: {xslt: true}}
+    - {name: yeptris, format: json, version: '0.6.26', features: {}}
+    - {name: yeptris, format: yaml, version: '0.6.26', features: {}}
+    - {name: jansson, format: json, version: '2.15.1', features: {}}
+    - {name: nlohmann-json, format: json, version: '3.x', features: {}}
+    - {name: rapidyaml, format: yaml, version: '0.7', features: {}}
+    - {name: tomlc17, format: toml, version: '0.x', features: {}}
+    - {name: libyaml, format: yaml, version: '0.2.5', features: {}}
+    - {name: teptris, format: toml, version: '0.1.27', features: {}}
+    - {name: libcbor, format: cbor, version: '0.14', features: {}}
+    - {name: yeptris, format: cbor, version: '0.6.26', features: {}}
+    - {name: simdjson, format: json, version: '3.13.0', features: {}}
+    - {name: pugixml, format: xml, version: '1.16', features: {}}
+    - {name: json-c, format: json, version: '0.19', features: {}}
+    - {name: nlohmann-json, format: json, version: '3.x', features: {}}
+benchmark_result:
+  parsing:
+    - {adapter: yeptris, format: json, data_size: small, time_per_iteration: 0.000000200, iterations_per_second: 5000000.012624}
+    - {adapter: jansson, format: json, data_size: small, time_per_iteration: 0.000002800, iterations_per_second: 357142.858045}
+    - {adapter: yeptris, format: json, data_size: medium, time_per_iteration: 0.000133333, iterations_per_second: 7500.000000}
+    - {adapter: jansson, format: json, data_size: medium, time_per_iteration: 0.003257000, iterations_per_second: 307.031010}
+    - {adapter: yeptris, format: json, data_size: large, time_per_iteration: 0.001678000, iterations_per_second: 595.947557}
+    - {adapter: jansson, format: json, data_size: large, time_per_iteration: 0.041702000, iterations_per_second: 23.979665}
+    - {adapter: json-c, format: json, data_size: small, time_per_iteration: 0.000002200, iterations_per_second: 454545.453344}
+    - {adapter: json-c, format: json, data_size: medium, time_per_iteration: 0.002267000, iterations_per_second: 441.111601}
+    - {adapter: json-c, format: json, data_size: large, time_per_iteration: 0.030648000, iterations_per_second: 32.628557}
+    - {adapter: nlohmann-json, format: json, data_size: small, time_per_iteration: 0.000001508, iterations_per_second: 662998.077575}
+    - {adapter: nlohmann-json, format: json, data_size: medium, time_per_iteration: 0.001600833, iterations_per_second: 624.674649}
+    - {adapter: nlohmann-json, format: json, data_size: large, time_per_iteration: 0.023125958, iterations_per_second: 43.241452}
+    - {adapter: simdjson, format: json, data_size: small, time_per_iteration: 0.000000142, iterations_per_second: 7062146.733581}
+    - {adapter: simdjson, format: json, data_size: medium, time_per_iteration: 0.000115083, iterations_per_second: 8689.355539}
+    - {adapter: simdjson, format: json, data_size: large, time_per_iteration: 0.002086375, iterations_per_second: 479.300222}
+  generation:
+    - {adapter: yeptris, format: json, data_size: small, time_per_iteration: 0.000002300, iterations_per_second: 434782.607644}
+    - {adapter: jansson, format: json, data_size: small, time_per_iteration: 0.000004100, iterations_per_second: 243902.438964}
+    - {adapter: yeptris, format: json, data_size: medium, time_per_iteration: 0.002089333, iterations_per_second: 478.621570}
+    - {adapter: jansson, format: json, data_size: medium, time_per_iteration: 0.004323000, iterations_per_second: 231.320842}
+    - {adapter: yeptris, format: json, data_size: large, time_per_iteration: 0.027140000, iterations_per_second: 36.845984}
+    - {adapter: jansson, format: json, data_size: large, time_per_iteration: 0.059958000, iterations_per_second: 16.678342}
+    - {adapter: json-c, format: json, data_size: small, time_per_iteration: 0.000004300, iterations_per_second: 232558.140122}
+    - {adapter: json-c, format: json, data_size: medium, time_per_iteration: 0.003912667, iterations_per_second: 255.580167}
+    - {adapter: json-c, format: json, data_size: large, time_per_iteration: 0.057450000, iterations_per_second: 17.406440}
+    - {adapter: nlohmann-json, format: json, data_size: small, time_per_iteration: 0.000002179, iterations_per_second: 458883.994461}
+    - {adapter: nlohmann-json, format: json, data_size: medium, time_per_iteration: 0.002257930, iterations_per_second: 442.883461}
+    - {adapter: nlohmann-json, format: json, data_size: large, time_per_iteration: 0.034389084, iterations_per_second: 29.078995}
+  xpath:
+  xslt:
