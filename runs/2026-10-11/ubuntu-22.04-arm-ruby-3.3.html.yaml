@@ -1,0 +1,530 @@
+---
+platform:
+  platform_string: ubuntu-22.04-arm-ruby-3.3
+  kind: local
+  os: linux
+  arch: arm64
+  ruby_version: '3.3'
+  ruby_build_tag: '3.3'
+metadata:
+  benchmark_config_path: config/benchmarks/full-html.yml
+  environment_config_path: config/environments/ci-ruby-3.3.yml
+  tags:
+  - local
+  - linux
+  - arm64
+  - ruby-3.3
+environment_config:
+  name: ci-ruby-3.3-ubuntu-22.04-arm
+  description: CI environment for Ruby 3.3 on ubuntu-22.04-arm
+  kind: local
+  created_at: '2026-10-11T08:22:34Z'
+  ruby_build_tag: '3.3'
+benchmark_config:
+  name: full-html
+  data_sizes:
+  - small
+  - medium
+  - large
+  formats:
+  - html
+  iterations:
+    small: 10
+    medium: 3
+    large: 1
+  warmup: 2
+  operations:
+  - parsing
+  - generation
+  - streaming
+  - xpath
+  - memory
+benchmark_result:
+  serializers:
+  - format: xml
+    name: rexml
+    version: 3.4.4
+    features:
+      xpath: true
+      namespaces: true
+      validation: false
+      streaming: false
+      stax: false
+  - format: xml
+    name: ox
+    version: 2.14.29
+    features:
+      xpath: false
+      namespaces: true
+      validation: false
+      streaming: true
+      stax: false
+  - format: xml
+    name: nokogiri
+    version: 1.19.4
+    features:
+      xpath: true
+      namespaces: true
+      validation: true
+      streaming: true
+      stax: true
+  - format: xml
+    name: oga
+    version: '3.5'
+    features:
+      xpath: true
+      namespaces: true
+      validation: false
+      streaming: true
+      stax: false
+  - format: xml
+    name: leptris
+    version: 1.9.201.2
+    features:
+      xpath: true
+      namespaces: true
+      validation: true
+      streaming: true
+      stax: true
+  - format: xml
+    name: saxon-he
+    features:
+      xslt_version: '3.0'
+      cold_process: true
+  - format: json
+    name: json
+    version: 3.0.2
+    features:
+      pretty_print: true
+      streaming: false
+      symbol_keys: false
+      custom_types: false
+  - format: json
+    name: oj
+    version: 3.17.7
+    features:
+      pretty_print: true
+      streaming: true
+      symbol_keys: true
+      custom_types: true
+  - format: json
+    name: rapidjson
+    version: 0.4.0
+    features:
+      pretty_print: true
+      streaming: false
+      symbol_keys: false
+      custom_types: false
+  - format: json
+    name: yajl
+    version: 1.4.3
+    features:
+      pretty_print: true
+      streaming: true
+      symbol_keys: false
+      custom_types: false
+  - format: json
+    name: yeptris-json
+    version: 0.6.7.5
+    features:
+      pretty_print: false
+      streaming: false
+      symbol_keys: false
+      custom_types: false
+  - format: html
+    name: nokogiri
+    version: 1.19.4
+    features:
+      html5: true
+      xpath: true
+  - format: html
+    name: oga
+    version: '3.5'
+    features:
+      html5: false
+      xpath: false
+  - format: html
+    name: leptris
+    version: 1.9.201.2
+    features:
+      html5: false
+      xpath: true
+  - format: html
+    name: leptris-whatwg
+    version: 1.9.201.2
+    features:
+      html5: true
+      xpath: true
+  - format: yaml
+    name: psych
+    version: 5.1.2
+    features:
+      streaming: false
+  - format: yaml
+    name: yeptris-yaml
+    version: 0.6.7.5
+    features:
+      streaming: true
+  - format: toml
+    name: toml-rb
+    version: 6.0.0
+    features:
+      comments: false
+      arrays_of_tables: true
+      inline_tables: true
+      multiline_strings: true
+  - format: toml
+    name: tomlib
+    version: 0.7.3
+    features:
+      comments: false
+      arrays_of_tables: true
+      inline_tables: true
+      multiline_strings: true
+  - format: toml
+    name: tomlrb
+    version: 2.0.4
+    features:
+      comments: false
+      arrays_of_tables: true
+      inline_tables: true
+      multiline_strings: true
+  - format: toml
+    name: teptris
+    version: 0.2.36
+    features:
+      comments: false
+      arrays_of_tables: true
+      inline_tables: true
+      multiline_strings: true
+  - format: cbor
+    name: cbor
+    version: 0.5.10.3
+    features:
+      streaming: false
+      canonical: false
+  - format: cbor
+    name: yeptris-cbor
+    version: 0.6.7.5
+    features:
+      streaming: false
+      canonical: false
+  parsing:
+  - adapter: nokogiri
+    format: html
+    data_size: small
+    time_per_iterations: 0.0001915979999580486
+    time_per_iteration: 1.9159799995804862e-05
+    iterations_per_second: 52192.61162532779
+    iterations_count: 10
+  - adapter: oga
+    format: html
+    data_size: small
+    time_per_iterations: 0.0009060660000272946
+    time_per_iteration: 9.060660000272946e-05
+    iterations_per_second: 11036.72359375449
+    iterations_count: 10
+  - adapter: leptris
+    format: html
+    data_size: small
+    time_per_iterations: 9.905899997875167e-05
+    time_per_iteration: 9.905899997875166e-06
+    iterations_per_second: 100949.93894694089
+    iterations_count: 10
+  - adapter: leptris-whatwg
+    format: html
+    data_size: small
+    time_per_iterations: 0.00010139500000150292
+    time_per_iteration: 1.0139500000150293e-05
+    iterations_per_second: 98624.19251296193
+    iterations_count: 10
+  - adapter: nokogiri
+    format: html
+    data_size: medium
+    time_per_iterations: 0.009634346999973786
+    time_per_iteration: 0.003211448999991262
+    iterations_per_second: 311.3859195655048
+    iterations_count: 3
+  - adapter: oga
+    format: html
+    data_size: medium
+    time_per_iterations: 0.09961808899998914
+    time_per_iteration: 0.03320602966666305
+    iterations_per_second: 30.115012545566167
+    iterations_count: 3
+  - adapter: leptris
+    format: html
+    data_size: medium
+    time_per_iterations: 0.005742167999983394
+    time_per_iteration: 0.0019140559999944646
+    iterations_per_second: 522.4507537934585
+    iterations_count: 3
+  - adapter: leptris-whatwg
+    format: html
+    data_size: medium
+    time_per_iterations: 0.013324143000033928
+    time_per_iteration: 0.004441381000011309
+    iterations_per_second: 225.15519384566505
+    iterations_count: 3
+  - adapter: nokogiri
+    format: html
+    data_size: large
+    time_per_iterations: 0.03155695699996386
+    time_per_iteration: 0.03155695699996386
+    iterations_per_second: 31.688733485967777
+    iterations_count: 1
+  - adapter: oga
+    format: html
+    data_size: large
+    time_per_iterations: 0.42931202800002666
+    time_per_iteration: 0.42931202800002666
+    iterations_per_second: 2.3293081366915205
+    iterations_count: 1
+  - adapter: leptris
+    format: html
+    data_size: large
+    time_per_iterations: 0.054852002000018274
+    time_per_iteration: 0.054852002000018274
+    iterations_per_second: 18.23087514653826
+    iterations_count: 1
+  - adapter: leptris-whatwg
+    format: html
+    data_size: large
+    time_per_iterations: 0.08736215599998332
+    time_per_iteration: 0.08736215599998332
+    iterations_per_second: 11.446603950573186
+    iterations_count: 1
+  generation:
+  - adapter: nokogiri
+    format: html
+    data_size: small
+    time_per_iterations: 0.00027864800000543255
+    time_per_iteration: 2.7864800000543254e-05
+    iterations_per_second: 35887.57141556745
+    iterations_count: 10
+  - adapter: oga
+    format: html
+    data_size: small
+    time_per_iterations: 0.0013981289999946966
+    time_per_iteration: 0.00013981289999946965
+    iterations_per_second: 7152.415835761887
+    iterations_count: 10
+  - adapter: leptris
+    format: html
+    data_size: small
+    time_per_iterations: 8.685099999183876e-05
+    time_per_iteration: 8.685099999183876e-06
+    iterations_per_second: 115139.72206353044
+    iterations_count: 10
+  - adapter: leptris-whatwg
+    format: html
+    data_size: small
+    time_per_iterations: 0.00011689900003375442
+    time_per_iteration: 1.1689900003375441e-05
+    iterations_per_second: 85543.93106110844
+    iterations_count: 10
+  - adapter: nokogiri
+    format: html
+    data_size: medium
+    time_per_iterations: 0.012239558999965539
+    time_per_iteration: 0.004079852999988513
+    iterations_per_second: 245.10687027273178
+    iterations_count: 3
+  - adapter: oga
+    format: html
+    data_size: medium
+    time_per_iterations: 0.17180854800000134
+    time_per_iteration: 0.057269516000000444
+    iterations_per_second: 17.46129651244114
+    iterations_count: 3
+  - adapter: leptris
+    format: html
+    data_size: medium
+    time_per_iterations: 0.005723760000023503
+    time_per_iteration: 0.0019079200000078345
+    iterations_per_second: 524.1309908150728
+    iterations_count: 3
+  - adapter: leptris-whatwg
+    format: html
+    data_size: medium
+    time_per_iterations: 0.013782468999977482
+    time_per_iteration: 0.004594156333325827
+    iterations_per_second: 217.6678213464439
+    iterations_count: 3
+  - adapter: nokogiri
+    format: html
+    data_size: large
+    time_per_iterations: 0.039689613000007284
+    time_per_iteration: 0.039689613000007284
+    iterations_per_second: 25.1955089609923
+    iterations_count: 1
+  - adapter: oga
+    format: html
+    data_size: large
+    time_per_iterations: 0.6155399500000271
+    time_per_iteration: 0.6155399500000271
+    iterations_per_second: 1.6245899230422913
+    iterations_count: 1
+  - adapter: leptris
+    format: html
+    data_size: large
+    time_per_iterations: 0.07880081700000119
+    time_per_iteration: 0.07880081700000119
+    iterations_per_second: 12.690223757451461
+    iterations_count: 1
+  - adapter: leptris-whatwg
+    format: html
+    data_size: large
+    time_per_iterations: 0.08322670699999435
+    time_per_iteration: 0.08322670699999435
+    iterations_per_second: 12.015373863104639
+    iterations_count: 1
+  memory:
+  - adapter: nokogiri
+    format: html
+    data_size: small
+    total_allocated: 300
+    total_retained: 0
+    allocated_memory: 44910
+    retained_memory: 0
+  - adapter: oga
+    format: html
+    data_size: small
+    total_allocated: 2600
+    total_retained: 0
+    allocated_memory: 183600
+    retained_memory: 0
+  - adapter: leptris
+    format: html
+    data_size: small
+    total_allocated: 70
+    total_retained: 0
+    allocated_memory: 5440
+    retained_memory: 0
+  - adapter: leptris-whatwg
+    format: html
+    data_size: small
+    total_allocated: 70
+    total_retained: 0
+    allocated_memory: 5440
+    retained_memory: 0
+  - adapter: nokogiri
+    format: html
+    data_size: medium
+    total_allocated: 290
+    total_retained: 1
+    allocated_memory: 7549050
+    retained_memory: 40
+  - adapter: oga
+    format: html
+    data_size: medium
+    total_allocated: 932600
+    total_retained: 0
+    allocated_memory: 64534880
+    retained_memory: 0
+  - adapter: leptris
+    format: html
+    data_size: medium
+    total_allocated: 70
+    total_retained: 0
+    allocated_memory: 5440
+    retained_memory: 0
+  - adapter: leptris-whatwg
+    format: html
+    data_size: medium
+    total_allocated: 70
+    total_retained: 0
+    allocated_memory: 5440
+    retained_memory: 0
+  - adapter: nokogiri
+    format: html
+    data_size: large
+    total_allocated: 29
+    total_retained: 1
+    allocated_memory: 7532909
+    retained_memory: 40
+  - adapter: oga
+    format: html
+    data_size: large
+    total_allocated: 930260
+    total_retained: 0
+    allocated_memory: 64737720
+    retained_memory: 0
+  - adapter: leptris
+    format: html
+    data_size: large
+    total_allocated: 7
+    total_retained: 0
+    allocated_memory: 544
+    retained_memory: 0
+  - adapter: leptris-whatwg
+    format: html
+    data_size: large
+    total_allocated: 7
+    total_retained: 0
+    allocated_memory: 544
+    retained_memory: 0
+  xpath:
+  - adapter: nokogiri
+    format: html
+    data_size: small
+    time_per_iterations: 0.000365395000017088
+    time_per_iteration: 3.65395000017088e-05
+    iterations_per_second: 27367.643234122912
+    iterations_count: 10
+  - adapter: leptris
+    format: html
+    data_size: small
+    time_per_iterations: 0.00018031699994480732
+    time_per_iteration: 1.8031699994480732e-05
+    iterations_per_second: 55457.888069682114
+    iterations_count: 10
+  - adapter: leptris-whatwg
+    format: html
+    data_size: small
+    time_per_iterations: 0.00020943800001305135
+    time_per_iteration: 2.0943800001305136e-05
+    iterations_per_second: 47746.82722035562
+    iterations_count: 10
+  - adapter: nokogiri
+    format: html
+    data_size: medium
+    time_per_iterations: 0.01008536000000504
+    time_per_iteration: 0.0033617866666683462
+    iterations_per_second: 297.4608739795606
+    iterations_count: 3
+  - adapter: leptris
+    format: html
+    data_size: medium
+    time_per_iterations: 0.005842612000037661
+    time_per_iteration: 0.0019475373333458872
+    iterations_per_second: 513.468975858856
+    iterations_count: 3
+  - adapter: leptris-whatwg
+    format: html
+    data_size: medium
+    time_per_iterations: 0.013836797999999817
+    time_per_iteration: 0.004612265999999939
+    iterations_per_second: 216.81316732383024
+    iterations_count: 3
+  - adapter: nokogiri
+    format: html
+    data_size: large
+    time_per_iterations: 0.030978957999991508
+    time_per_iteration: 0.030978957999991508
+    iterations_per_second: 32.2799753303605
+    iterations_count: 1
+  - adapter: leptris
+    format: html
+    data_size: large
+    time_per_iterations: 0.073353993000012
+    time_per_iteration: 0.073353993000012
+    iterations_per_second: 13.63252304478962
+    iterations_count: 1
+  - adapter: leptris-whatwg
+    format: html
+    data_size: large
+    time_per_iterations: 0.09231054200000699
+    time_per_iteration: 0.09231054200000699
+    iterations_per_second: 10.832998900601453
+    iterations_count: 1
