@@ -1,0 +1,41 @@
+platform:
+  platform_string: ubuntu-22.04-c-native
+  kind: native
+  os: linux
+  arch: x86_64
+  runtime: c
+  runtime_version: gcc
+benchmark_config:
+  name: c-full
+  formats: [xml, html, json, yaml, toml]
+  operations: [parsing, xslt]
+serializers:
+    - {name: leptris, format: xml, version: '1.9.337', features: {xpath: true, html5: true, xslt: true}}
+    - {name: libxml2, format: xml, version: '2.9.13', features: {xpath: true}}
+    - {name: libxslt, format: xml, version: '1.1.34', features: {xslt: true}}
+    - {name: yeptris, format: json, version: '0.6.32', features: {}}
+    - {name: yeptris, format: yaml, version: '0.6.32', features: {}}
+    - {name: jansson, format: json, version: '2.13.1', features: {}}
+    - {name: nlohmann-json, format: json, version: '3.x', features: {}}
+    - {name: rapidyaml, format: yaml, version: '0.7', features: {}}
+    - {name: tomlc17, format: toml, version: '0.x', features: {}}
+    - {name: libyaml, format: yaml, version: '0.2.2', features: {}}
+    - {name: teptris, format: toml, version: '0.3.0', features: {}}
+    - {name: libcbor, format: cbor, version: '0.14', features: {}}
+    - {name: yeptris, format: cbor, version: '0.6.32', features: {}}
+    - {name: simdjson, format: json, version: '3.13.0', features: {}}
+    - {name: pugixml, format: xml, version: '1.16', features: {}}
+benchmark_result:
+  parsing:
+    - {adapter: teptris, format: toml, data_size: small, time_per_iteration: 0.000000357, iterations_per_second: 2804262.498386}
+    - {adapter: tomlc17, format: toml, data_size: small, time_per_iteration: 0.000002267, iterations_per_second: 441033.783598}
+    - {adapter: teptris, format: toml, data_size: medium, time_per_iteration: 0.000037309, iterations_per_second: 26802.944744}
+    - {adapter: tomlc17, format: toml, data_size: medium, time_per_iteration: 0.000229723, iterations_per_second: 4353.062379}
+    - {adapter: teptris, format: toml, data_size: large, time_per_iteration: 0.000627066, iterations_per_second: 1594.728466}
+    - {adapter: tomlc17, format: toml, data_size: large, time_per_iteration: 0.002779052, iterations_per_second: 359.834937}
+  generation:
+    - {adapter: teptris, format: toml, data_size: small, time_per_iteration: 0.000000477, iterations_per_second: 2097755.423576}
+    - {adapter: teptris, format: toml, data_size: medium, time_per_iteration: 0.000059026, iterations_per_second: 16941.686716}
+    - {adapter: teptris, format: toml, data_size: large, time_per_iteration: 0.000856462, iterations_per_second: 1167.594126}
+  xpath:
+  xslt:
