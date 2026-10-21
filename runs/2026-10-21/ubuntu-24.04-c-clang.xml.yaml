@@ -1,0 +1,65 @@
+platform:
+  platform_string: ubuntu-24.04-c-native
+  kind: native
+  os: linux
+  arch: x86_64
+  runtime: c
+  runtime_version: clang
+benchmark_config:
+  name: c-full
+  formats: [xml, html, json, yaml, toml]
+  operations: [parsing, xslt]
+serializers:
+    - {name: leptris, format: xml, version: '1.9.379', features: {xpath: true, html5: true, xslt: true}}
+    - {name: libxml2, format: xml, version: '2.9.14', features: {xpath: true}}
+    - {name: libxslt, format: xml, version: '1.1.39', features: {xslt: true}}
+    - {name: yeptris, format: json, version: '0.6.35', features: {}}
+    - {name: yeptris, format: yaml, version: '0.6.35', features: {}}
+    - {name: jansson, format: json, version: '2.14', features: {}}
+    - {name: nlohmann-json, format: json, version: '3.x', features: {}}
+    - {name: rapidyaml, format: yaml, version: '0.7', features: {}}
+    - {name: tomlc17, format: toml, version: '0.x', features: {}}
+    - {name: libyaml, format: yaml, version: '0.2.5', features: {}}
+    - {name: teptris, format: toml, version: '0.3.7', features: {}}
+    - {name: libcbor, format: cbor, version: '0.14', features: {}}
+    - {name: yeptris, format: cbor, version: '0.6.35', features: {}}
+    - {name: simdjson, format: json, version: '3.13.0', features: {}}
+    - {name: pugixml, format: xml, version: '1.16', features: {}}
+benchmark_result:
+  parsing:
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000001520, iterations_per_second: 657938.021473}
+    - {adapter: libxml2, format: xml, data_size: small, time_per_iteration: 0.000006209, iterations_per_second: 161066.907157}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.001322481, iterations_per_second: 756.154340}
+    - {adapter: libxml2, format: xml, data_size: medium, time_per_iteration: 0.003419737, iterations_per_second: 292.420148}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.018414851, iterations_per_second: 54.303996}
+    - {adapter: libxml2, format: xml, data_size: large, time_per_iteration: 0.063478360, iterations_per_second: 15.753400}
+    - {adapter: pugixml, format: xml, data_size: small, time_per_iteration: 0.000000408, iterations_per_second: 2452783.926942}
+    - {adapter: pugixml, format: xml, data_size: medium, time_per_iteration: 0.000283857, iterations_per_second: 3522.896479}
+    - {adapter: pugixml, format: xml, data_size: large, time_per_iteration: 0.003731453, iterations_per_second: 267.992120}
+  generation:
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000005690, iterations_per_second: 175759.280122}
+    - {adapter: libxml2, format: xml, data_size: small, time_per_iteration: 0.000007860, iterations_per_second: 127232.938095}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.001817243, iterations_per_second: 550.284240}
+    - {adapter: libxml2, format: xml, data_size: medium, time_per_iteration: 0.004084556, iterations_per_second: 244.824652}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.031999787, iterations_per_second: 31.250208}
+    - {adapter: libxml2, format: xml, data_size: large, time_per_iteration: 0.082916403, iterations_per_second: 12.060340}
+    - {adapter: pugixml, format: xml, data_size: small, time_per_iteration: 0.000000677, iterations_per_second: 1476450.613704}
+    - {adapter: pugixml, format: xml, data_size: medium, time_per_iteration: 0.000627673, iterations_per_second: 1593.186261}
+    - {adapter: pugixml, format: xml, data_size: large, time_per_iteration: 0.008340356, iterations_per_second: 119.898959}
+  xpath:
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000003928, iterations_per_second: 254563.042678}
+    - {adapter: libxml2, format: xml, data_size: small, time_per_iteration: 0.000013076, iterations_per_second: 76473.062367}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.002092303, iterations_per_second: 477.942172}
+    - {adapter: libxml2, format: xml, data_size: medium, time_per_iteration: 0.005997818, iterations_per_second: 166.727300}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.049012739, iterations_per_second: 20.402859}
+    - {adapter: libxml2, format: xml, data_size: large, time_per_iteration: 0.076825011, iterations_per_second: 13.016594}
+    - {adapter: pugixml, format: xml, data_size: small, time_per_iteration: 0.000001372, iterations_per_second: 729128.690003}
+    - {adapter: pugixml, format: xml, data_size: medium, time_per_iteration: 0.000598345, iterations_per_second: 1671.276605}
+    - {adapter: pugixml, format: xml, data_size: large, time_per_iteration: 0.007398837, iterations_per_second: 135.156377}
+  xslt:
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000051942, iterations_per_second: 19252.205820}
+    - {adapter: libxslt, format: xml, data_size: small, time_per_iteration: 0.000072396, iterations_per_second: 13812.860602}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.003138481, iterations_per_second: 318.625441}
+    - {adapter: libxslt, format: xml, data_size: medium, time_per_iteration: 0.004533982, iterations_per_second: 220.556660}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.059345217, iterations_per_second: 16.850558}
+    - {adapter: libxslt, format: xml, data_size: large, time_per_iteration: 0.089873754, iterations_per_second: 11.126719}
