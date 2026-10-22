@@ -1,0 +1,48 @@
+platform:
+  platform_string: macos-15-c-native
+  kind: native
+  os: macos
+  arch: arm64
+  runtime: c
+  runtime_version: gcc
+benchmark_config:
+  name: c-full
+  formats: [xml, html, json, yaml, toml]
+  operations: [parsing, xslt]
+serializers:
+    - {name: leptris, format: xml, version: '1.9.381', features: {xpath: true, html5: true, xslt: true}}
+    - {name: libxml2, format: xml, version: '2.15.4', features: {xpath: true}}
+    - {name: libxslt, format: xml, version: '1.1.35', features: {xslt: true}}
+    - {name: yeptris, format: json, version: '0.6.37', features: {}}
+    - {name: yeptris, format: yaml, version: '0.6.37', features: {}}
+    - {name: jansson, format: json, version: '2.15.1', features: {}}
+    - {name: nlohmann-json, format: json, version: '3.x', features: {}}
+    - {name: rapidyaml, format: yaml, version: '0.7', features: {}}
+    - {name: tomlc17, format: toml, version: '0.x', features: {}}
+    - {name: libyaml, format: yaml, version: '0.2.5', features: {}}
+    - {name: teptris, format: toml, version: '0.3.7', features: {}}
+    - {name: libcbor, format: cbor, version: '0.14', features: {}}
+    - {name: yeptris, format: cbor, version: '0.6.37', features: {}}
+    - {name: simdjson, format: json, version: '3.13.0', features: {}}
+    - {name: pugixml, format: xml, version: '1.16', features: {}}
+    - {name: tinycbor, format: cbor, version: '0.6', features: {}}
+benchmark_result:
+  parsing:
+    - {adapter: yeptris, format: cbor, data_size: small, time_per_iteration: 0.000001100, iterations_per_second: 909090.909037}
+    - {adapter: libcbor, format: cbor, data_size: small, time_per_iteration: 0.000001200, iterations_per_second: 833333.333464}
+    - {adapter: yeptris, format: cbor, data_size: medium, time_per_iteration: 0.000704333, iterations_per_second: 1419.782300}
+    - {adapter: libcbor, format: cbor, data_size: medium, time_per_iteration: 0.001365667, iterations_per_second: 732.243105}
+    - {adapter: yeptris, format: cbor, data_size: large, time_per_iteration: 0.008722000, iterations_per_second: 114.652603}
+    - {adapter: libcbor, format: cbor, data_size: large, time_per_iteration: 0.030347000, iterations_per_second: 32.952186}
+    - {adapter: tinycbor, format: cbor, data_size: small, time_per_iteration: 0.000000300, iterations_per_second: 3333333.341749}
+    - {adapter: tinycbor, format: cbor, data_size: medium, time_per_iteration: 0.000314667, iterations_per_second: 3177.966102}
+    - {adapter: tinycbor, format: cbor, data_size: large, time_per_iteration: 0.005614000, iterations_per_second: 178.126113}
+  generation:
+    - {adapter: yeptris, format: cbor, data_size: small, time_per_iteration: 0.000001500, iterations_per_second: 666666.667087}
+    - {adapter: libcbor, format: cbor, data_size: small, time_per_iteration: 0.000001500, iterations_per_second: 666666.667087}
+    - {adapter: yeptris, format: cbor, data_size: medium, time_per_iteration: 0.002116000, iterations_per_second: 472.589792}
+    - {adapter: libcbor, format: cbor, data_size: medium, time_per_iteration: 0.002702000, iterations_per_second: 370.096225}
+    - {adapter: yeptris, format: cbor, data_size: large, time_per_iteration: 0.019455000, iterations_per_second: 51.400668}
+    - {adapter: libcbor, format: cbor, data_size: large, time_per_iteration: 0.023105000, iterations_per_second: 43.280675}
+  xpath:
+  xslt:
