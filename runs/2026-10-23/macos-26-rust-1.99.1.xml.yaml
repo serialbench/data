@@ -1,0 +1,28 @@
+platform:
+  platform_string: macos-26-rust-1.99.1
+  kind: native
+  os: macos
+  arch: arm64
+  runtime: rust
+  runtime_version: 1.99.1
+benchmark_config:
+  name: rust-full
+  formats: [xml, yaml, toml]
+  operations: [parsing, generation, xpath]
+benchmark_result:
+  serializers:
+    - {name: leptris, format: xml, version: '1.4.1', features: {xpath: true}}
+    - {name: yeptris, format: yaml, version: '0.6.3', features: {}}
+    - {name: teptris, format: toml, version: '0.1.6', features: {}}
+  parsing:
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000001162, iterations_per_second: 860215.053763}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.001207945, iterations_per_second: 827.852490}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.010831833, iterations_per_second: 92.320478}
+  generation:
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000003192, iterations_per_second: 313312.654698}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.001645542, iterations_per_second: 607.702631}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.029741750, iterations_per_second: 33.622769}
+  xpath:
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000005392, iterations_per_second: 185470.259844}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.002326570, iterations_per_second: 429.817346}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.041934250, iterations_per_second: 23.846855}

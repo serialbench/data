@@ -1,0 +1,28 @@
+platform:
+  platform_string: ubuntu-24.04-rust-1.99.1
+  kind: native
+  os: linux
+  arch: x86_64
+  runtime: rust
+  runtime_version: 1.99.1
+benchmark_config:
+  name: rust-full
+  formats: [xml, yaml, toml]
+  operations: [parsing, generation, xpath]
+benchmark_result:
+  serializers:
+    - {name: leptris, format: xml, version: '1.4.1', features: {xpath: true}}
+    - {name: yeptris, format: yaml, version: '0.6.3', features: {}}
+    - {name: teptris, format: toml, version: '0.1.6', features: {}}
+  parsing:
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000000650, iterations_per_second: 1538461.538462}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.000502668, iterations_per_second: 1989.385963}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.006790724, iterations_per_second: 147.259703}
+  generation:
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000001358, iterations_per_second: 736377.025037}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.001279624, iterations_per_second: 781.479356}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.017070502, iterations_per_second: 58.580585}
+  xpath:
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000004089, iterations_per_second: 244546.610584}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.002596051, iterations_per_second: 385.200395}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.039127295, iterations_per_second: 25.557606}

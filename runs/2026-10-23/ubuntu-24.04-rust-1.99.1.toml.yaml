@@ -1,0 +1,25 @@
+platform:
+  platform_string: ubuntu-24.04-rust-1.99.1
+  kind: native
+  os: linux
+  arch: x86_64
+  runtime: rust
+  runtime_version: 1.99.1
+benchmark_config:
+  name: rust-full
+  formats: [xml, yaml, toml]
+  operations: [parsing, generation, xpath]
+benchmark_result:
+  serializers:
+    - {name: leptris, format: xml, version: '1.4.1', features: {xpath: true}}
+    - {name: yeptris, format: yaml, version: '0.6.3', features: {}}
+    - {name: teptris, format: toml, version: '0.1.6', features: {}}
+  parsing:
+    - {adapter: teptris, format: toml, data_size: small, time_per_iteration: 0.000001972, iterations_per_second: 507099.391481}
+    - {adapter: teptris, format: toml, data_size: medium, time_per_iteration: 0.000185288, iterations_per_second: 5397.013293}
+    - {adapter: teptris, format: toml, data_size: large, time_per_iteration: 0.003869984, iterations_per_second: 258.399001}
+  generation:
+    - {adapter: teptris, format: toml, data_size: small, time_per_iteration: 0.000008651, iterations_per_second: 115589.564574}
+    - {adapter: teptris, format: toml, data_size: medium, time_per_iteration: 0.000274078, iterations_per_second: 3648.600822}
+    - {adapter: teptris, format: toml, data_size: large, time_per_iteration: 0.003372981, iterations_per_second: 296.473653}
+  xpath:

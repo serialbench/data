@@ -1,0 +1,25 @@
+platform:
+  platform_string: macos-26-rust-1.99.1
+  kind: native
+  os: macos
+  arch: arm64
+  runtime: rust
+  runtime_version: 1.99.1
+benchmark_config:
+  name: rust-full
+  formats: [xml, yaml, toml]
+  operations: [parsing, generation, xpath]
+benchmark_result:
+  serializers:
+    - {name: leptris, format: xml, version: '1.4.1', features: {xpath: true}}
+    - {name: yeptris, format: yaml, version: '0.6.3', features: {}}
+    - {name: teptris, format: toml, version: '0.1.6', features: {}}
+  parsing:
+    - {adapter: yeptris, format: yaml, data_size: small, time_per_iteration: 0.000004233, iterations_per_second: 236216.752492}
+    - {adapter: yeptris, format: yaml, data_size: medium, time_per_iteration: 0.001063833, iterations_per_second: 939.996867}
+    - {adapter: yeptris, format: yaml, data_size: large, time_per_iteration: 0.014956792, iterations_per_second: 66.859257}
+  generation:
+    - {adapter: yeptris, format: yaml, data_size: small, time_per_iteration: 0.000012496, iterations_per_second: 80026.889035}
+    - {adapter: yeptris, format: yaml, data_size: medium, time_per_iteration: 0.001926056, iterations_per_second: 519.195793}
+    - {adapter: yeptris, format: yaml, data_size: large, time_per_iteration: 0.027170875, iterations_per_second: 36.804115}
+  xpath:
