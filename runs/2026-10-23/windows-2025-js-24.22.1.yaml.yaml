@@ -1,0 +1,25 @@
+platform:
+  platform_string: windows-2025-js-24.22.1
+  kind: wasm
+  os: windows
+  arch: x86_64
+  runtime: js
+  runtime_version: 24.22.1
+benchmark_config:
+  name: js-full
+  formats: [xml, yaml, toml]
+  operations: [parsing, generation, xpath]
+benchmark_result:
+  serializers:
+    - {name: leptris, format: xml, version: '0.1.23', features: {xpath: true, wasm: true}}
+    - {name: yeptris, format: yaml, version: '0.1.0', features: {wasm: true}}
+    - {name: teptris, format: toml, version: '0.3.11', features: {wasm: true}}
+  parsing:
+    - {adapter: yeptris, format: yaml, data_size: small, time_per_iteration: 0.000052110, iterations_per_second: 19190.174631}
+    - {adapter: yeptris, format: yaml, data_size: medium, time_per_iteration: 0.000537433, iterations_per_second: 1860.695900}
+    - {adapter: yeptris, format: yaml, data_size: large, time_per_iteration: 0.000282800, iterations_per_second: 3536.067893}
+  generation:
+    - {adapter: yeptris, format: yaml, data_size: small, time_per_iteration: 0.000340590, iterations_per_second: 2936.081506}
+    - {adapter: yeptris, format: yaml, data_size: medium, time_per_iteration: 0.000547233, iterations_per_second: 1827.374063}
+    - {adapter: yeptris, format: yaml, data_size: large, time_per_iteration: 0.000375800, iterations_per_second: 2660.989888}
+  xpath:

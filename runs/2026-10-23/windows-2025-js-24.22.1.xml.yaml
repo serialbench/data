@@ -1,0 +1,28 @@
+platform:
+  platform_string: windows-2025-js-24.22.1
+  kind: wasm
+  os: windows
+  arch: x86_64
+  runtime: js
+  runtime_version: 24.22.1
+benchmark_config:
+  name: js-full
+  formats: [xml, yaml, toml]
+  operations: [parsing, generation, xpath]
+benchmark_result:
+  serializers:
+    - {name: leptris, format: xml, version: '0.1.23', features: {xpath: true, wasm: true}}
+    - {name: yeptris, format: yaml, version: '0.1.0', features: {wasm: true}}
+    - {name: teptris, format: toml, version: '0.3.11', features: {wasm: true}}
+  parsing:
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000016050, iterations_per_second: 62305.295950}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.004911167, iterations_per_second: 203.617606}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.023841500, iterations_per_second: 41.943670}
+  generation:
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000022230, iterations_per_second: 44984.255511}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.003558000, iterations_per_second: 281.056773}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.044059600, iterations_per_second: 22.696529}
+  xpath:
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000028020, iterations_per_second: 35688.793719}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.003305300, iterations_per_second: 302.544398}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.052749300, iterations_per_second: 18.957598}

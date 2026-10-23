@@ -1,0 +1,28 @@
+platform:
+  platform_string: macos-26-js-24.21.0
+  kind: wasm
+  os: macos
+  arch: arm64
+  runtime: js
+  runtime_version: 24.21.0
+benchmark_config:
+  name: js-full
+  formats: [xml, yaml, toml]
+  operations: [parsing, generation, xpath]
+benchmark_result:
+  serializers:
+    - {name: leptris, format: xml, version: '0.1.23', features: {xpath: true, wasm: true}}
+    - {name: yeptris, format: yaml, version: '0.1.0', features: {wasm: true}}
+    - {name: teptris, format: toml, version: '0.3.11', features: {wasm: true}}
+  parsing:
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000013275, iterations_per_second: 75329.566855}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.002609111, iterations_per_second: 383.272310}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.022087375, iterations_per_second: 45.274733}
+  generation:
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000080237, iterations_per_second: 12463.000467}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.005122778, iterations_per_second: 195.206585}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.056904459, iterations_per_second: 17.573315}
+  xpath:
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000055229, iterations_per_second: 18106.396809}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.004033861, iterations_per_second: 247.901432}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.050665459, iterations_per_second: 19.737313}

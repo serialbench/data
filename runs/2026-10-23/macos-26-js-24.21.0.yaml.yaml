@@ -1,0 +1,25 @@
+platform:
+  platform_string: macos-26-js-24.21.0
+  kind: wasm
+  os: macos
+  arch: arm64
+  runtime: js
+  runtime_version: 24.21.0
+benchmark_config:
+  name: js-full
+  formats: [xml, yaml, toml]
+  operations: [parsing, generation, xpath]
+benchmark_result:
+  serializers:
+    - {name: leptris, format: xml, version: '0.1.23', features: {xpath: true, wasm: true}}
+    - {name: yeptris, format: yaml, version: '0.1.0', features: {wasm: true}}
+    - {name: teptris, format: toml, version: '0.3.11', features: {wasm: true}}
+  parsing:
+    - {adapter: yeptris, format: yaml, data_size: small, time_per_iteration: 0.000040083, iterations_per_second: 24947.983454}
+    - {adapter: yeptris, format: yaml, data_size: medium, time_per_iteration: 0.000196569, iterations_per_second: 5087.263527}
+    - {adapter: yeptris, format: yaml, data_size: large, time_per_iteration: 0.000121875, iterations_per_second: 8205.128205}
+  generation:
+    - {adapter: yeptris, format: yaml, data_size: small, time_per_iteration: 0.000203179, iterations_per_second: 4921.766067}
+    - {adapter: yeptris, format: yaml, data_size: medium, time_per_iteration: 0.000519958, iterations_per_second: 1923.231028}
+    - {adapter: yeptris, format: yaml, data_size: large, time_per_iteration: 0.000177083, iterations_per_second: 5647.069453}
+  xpath:

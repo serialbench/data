@@ -1,0 +1,25 @@
+platform:
+  platform_string: ubuntu-24.04-js-24.21.0
+  kind: wasm
+  os: linux
+  arch: x86_64
+  runtime: js
+  runtime_version: 24.21.0
+benchmark_config:
+  name: js-full
+  formats: [xml, yaml, toml]
+  operations: [parsing, generation, xpath]
+benchmark_result:
+  serializers:
+    - {name: leptris, format: xml, version: '0.1.23', features: {xpath: true, wasm: true}}
+    - {name: yeptris, format: yaml, version: '0.1.0', features: {wasm: true}}
+    - {name: teptris, format: toml, version: '0.3.11', features: {wasm: true}}
+  parsing:
+    - {adapter: teptris, format: toml, data_size: small, time_per_iteration: 0.000038743, iterations_per_second: 25811.314131}
+    - {adapter: teptris, format: toml, data_size: medium, time_per_iteration: 0.001153699, iterations_per_second: 866.776959}
+    - {adapter: teptris, format: toml, data_size: large, time_per_iteration: 0.009444504, iterations_per_second: 105.881685}
+  generation:
+    - {adapter: teptris, format: toml, data_size: small, time_per_iteration: 0.000083734, iterations_per_second: 11942.580075}
+    - {adapter: teptris, format: toml, data_size: medium, time_per_iteration: 0.002920385, iterations_per_second: 342.420566}
+    - {adapter: teptris, format: toml, data_size: large, time_per_iteration: 0.014585386, iterations_per_second: 68.561778}
+  xpath:
