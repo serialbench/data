@@ -1,0 +1,29 @@
+platform:
+  platform_string: macos-26-js-24.21.0
+  kind: wasm
+  os: macos
+  arch: arm64
+  runtime: js
+  runtime_version: 24.21.0
+benchmark_config:
+  name: js-full
+  formats: [json, xml, html, yaml, toml]
+  operations: [parsing, generation, xpath]
+benchmark_result:
+  serializers:
+    - {name: leptris, format: xml, version: '0.1.23', features: {xpath: true, wasm: true}}
+    - {name: teptris, format: toml, version: '0.3.11', features: {wasm: true}}
+    - {name: native-json, format: json, version: '24.21.0', features: {native: true}}
+    - {name: fast-xml-parser, format: xml, version: '5.11.2', features: {}}
+    - {name: htmlparser2, format: html, version: '12.0.0', features: {}}
+    - {name: yaml22, format: yaml, version: '2.9.1', features: {}}
+    - {name: smol-toml, format: toml, version: '1.9.1', features: {}}
+  parsing:
+    - {adapter: native-json, format: json, data_size: small, time_per_iteration: 0.000001479, iterations_per_second: 676086.809546}
+    - {adapter: native-json, format: json, data_size: medium, time_per_iteration: 0.001147333, iterations_per_second: 871.586287}
+    - {adapter: native-json, format: json, data_size: large, time_per_iteration: 0.019863500, iterations_per_second: 50.343595}
+  generation:
+    - {adapter: native-json, format: json, data_size: small, time_per_iteration: 0.000001671, iterations_per_second: 598479.861153}
+    - {adapter: native-json, format: json, data_size: medium, time_per_iteration: 0.001424264, iterations_per_second: 702.117023}
+    - {adapter: native-json, format: json, data_size: large, time_per_iteration: 0.013579708, iterations_per_second: 73.639286}
+  xpath:
