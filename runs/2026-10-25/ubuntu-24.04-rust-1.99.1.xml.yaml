@@ -1,0 +1,40 @@
+platform:
+  platform_string: ubuntu-24.04-rust-1.99.1
+  kind: native
+  os: linux
+  arch: x86_64
+  runtime: rust
+  runtime_version: 1.99.1
+benchmark_config:
+  name: rust-full
+  formats: [json, xml, yaml, toml]
+  operations: [parsing, generation, xpath]
+benchmark_result:
+  serializers:
+    - {name: leptris, format: xml, version: '1.4.1', features: {xpath: true}}
+    - {name: yeptris, format: yaml, version: '0.6.3', features: {}}
+    - {name: teptris, format: toml, version: '0.1.6', features: {}}
+    - {name: serde-json, format: json, version: '1.0.154', features: {}}
+    - {name: simd-json, format: json, version: '0.18.1', features: {}}
+    - {name: quick-xml, format: xml, version: '0.42.0', features: {}}
+    - {name: roxmltree, format: xml, version: '0.21.1', features: {}}
+    - {name: yaml-rust2, format: yaml, version: '0.13.0', features: {}}
+    - {name: toml, format: toml, version: '1.1.8', features: {}}
+  parsing:
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000001564, iterations_per_second: 639386.189258}
+    - {adapter: quick-xml, format: xml, data_size: small, time_per_iteration: 0.000001237, iterations_per_second: 808276.753961}
+    - {adapter: roxmltree, format: xml, data_size: small, time_per_iteration: 0.000003083, iterations_per_second: 324380.433372}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.001233036, iterations_per_second: 811.006329}
+    - {adapter: quick-xml, format: xml, data_size: medium, time_per_iteration: 0.001072927, iterations_per_second: 932.029569}
+    - {adapter: roxmltree, format: xml, data_size: medium, time_per_iteration: 0.001907003, iterations_per_second: 524.383116}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.017037279, iterations_per_second: 58.694819}
+    - {adapter: quick-xml, format: xml, data_size: large, time_per_iteration: 0.014902288, iterations_per_second: 67.103790}
+    - {adapter: roxmltree, format: xml, data_size: large, time_per_iteration: 0.027240014, iterations_per_second: 36.710701}
+  generation:
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000002703, iterations_per_second: 369959.304477}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.002237435, iterations_per_second: 446.940291}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.029785270, iterations_per_second: 33.573642}
+  xpath:
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000007854, iterations_per_second: 127328.520315}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.001896446, iterations_per_second: 527.302029}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.025802424, iterations_per_second: 38.756049}
