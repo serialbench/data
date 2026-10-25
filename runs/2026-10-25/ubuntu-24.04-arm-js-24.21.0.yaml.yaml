@@ -1,0 +1,29 @@
+platform:
+  platform_string: ubuntu-24.04-arm-js-24.21.0
+  kind: wasm
+  os: linux
+  arch: arm64
+  runtime: js
+  runtime_version: 24.21.0
+benchmark_config:
+  name: js-full
+  formats: [json, xml, html, yaml, toml]
+  operations: [parsing, generation, xpath]
+benchmark_result:
+  serializers:
+    - {name: leptris, format: xml, version: '0.1.23', features: {xpath: true, wasm: true}}
+    - {name: teptris, format: toml, version: '0.3.11', features: {wasm: true}}
+    - {name: native-json, format: json, version: '24.21.0', features: {native: true}}
+    - {name: fast-xml-parser, format: xml, version: '5.11.2', features: {}}
+    - {name: htmlparser2, format: html, version: '12.0.0', features: {}}
+    - {name: yaml22, format: yaml, version: '2.9.1', features: {}}
+    - {name: smol-toml, format: toml, version: '1.9.1', features: {}}
+  parsing:
+    - {adapter: yaml22, format: yaml, data_size: small, time_per_iteration: 0.000382206, iterations_per_second: 2616.390799}
+    - {adapter: yaml22, format: yaml, data_size: medium, time_per_iteration: 0.113106652, iterations_per_second: 8.841213}
+    - {adapter: yaml22, format: yaml, data_size: large, time_per_iteration: 1.396680396, iterations_per_second: 0.715983}
+  generation:
+    - {adapter: yaml22, format: yaml, data_size: small, time_per_iteration: 0.000618239, iterations_per_second: 1617.496917}
+    - {adapter: yaml22, format: yaml, data_size: medium, time_per_iteration: 0.146813779, iterations_per_second: 6.811350}
+    - {adapter: yaml22, format: yaml, data_size: large, time_per_iteration: 1.993318657, iterations_per_second: 0.501676}
+  xpath:
