@@ -1,0 +1,35 @@
+platform:
+  platform_string: windows-2025-js-24.22.1
+  kind: wasm
+  os: windows
+  arch: x86_64
+  runtime: js
+  runtime_version: 24.22.1
+benchmark_config:
+  name: js-full
+  formats: [json, xml, html, yaml, toml]
+  operations: [parsing, generation, xpath]
+benchmark_result:
+  serializers:
+    - {name: leptris, format: xml, version: '0.1.23', features: {xpath: true, wasm: true}}
+    - {name: teptris, format: toml, version: '0.3.13', features: {wasm: true}}
+    - {name: native-json, format: json, version: '24.22.1', features: {native: true}}
+    - {name: fast-xml-parser, format: xml, version: '5.11.2', features: {}}
+    - {name: htmlparser2, format: html, version: '12.0.0', features: {}}
+    - {name: yaml22, format: yaml, version: '2.9.1', features: {}}
+    - {name: smol-toml, format: toml, version: '1.9.1', features: {}}
+  parsing:
+    - {adapter: teptris, format: toml, data_size: small, time_per_iteration: 0.000041500, iterations_per_second: 24096.385542}
+    - {adapter: smol-toml, format: toml, data_size: small, time_per_iteration: 0.000036730, iterations_per_second: 27225.701062}
+    - {adapter: teptris, format: toml, data_size: medium, time_per_iteration: 0.001054967, iterations_per_second: 947.897248}
+    - {adapter: smol-toml, format: toml, data_size: medium, time_per_iteration: 0.001617567, iterations_per_second: 618.212541}
+    - {adapter: teptris, format: toml, data_size: large, time_per_iteration: 0.004791100, iterations_per_second: 208.720336}
+    - {adapter: smol-toml, format: toml, data_size: large, time_per_iteration: 0.008879900, iterations_per_second: 112.613881}
+  generation:
+    - {adapter: teptris, format: toml, data_size: small, time_per_iteration: 0.000054270, iterations_per_second: 18426.386586}
+    - {adapter: smol-toml, format: toml, data_size: small, time_per_iteration: 0.000032280, iterations_per_second: 30978.934325}
+    - {adapter: teptris, format: toml, data_size: medium, time_per_iteration: 0.001622267, iterations_per_second: 616.421468}
+    - {adapter: smol-toml, format: toml, data_size: medium, time_per_iteration: 0.000945433, iterations_per_second: 1057.716039}
+    - {adapter: teptris, format: toml, data_size: large, time_per_iteration: 0.013927200, iterations_per_second: 71.801942}
+    - {adapter: smol-toml, format: toml, data_size: large, time_per_iteration: 0.011514000, iterations_per_second: 86.850790}
+  xpath:
