@@ -1,0 +1,37 @@
+platform:
+  platform_string: ubuntu-24.04-rust-1.99.1
+  kind: native
+  os: linux
+  arch: x86_64
+  runtime: rust
+  runtime_version: 1.99.1
+benchmark_config:
+  name: rust-full
+  formats: [json, xml, yaml, toml]
+  operations: [parsing, generation, xpath]
+benchmark_result:
+  serializers:
+    - {name: leptris, format: xml, version: '1.4.1', features: {xpath: true}}
+    - {name: yeptris, format: yaml, version: '0.6.3', features: {}}
+    - {name: teptris, format: toml, version: '0.1.6', features: {}}
+    - {name: serde-json, format: json, version: '1.0.154', features: {}}
+    - {name: simd-json, format: json, version: '0.18.1', features: {}}
+    - {name: quick-xml, format: xml, version: '0.42.0', features: {}}
+    - {name: roxmltree, format: xml, version: '0.21.1', features: {}}
+    - {name: yaml-rust2, format: yaml, version: '0.13.0', features: {}}
+    - {name: toml, format: toml, version: '1.1.8', features: {}}
+  parsing:
+    - {adapter: serde-json, format: json, data_size: small, time_per_iteration: 0.000001510, iterations_per_second: 662339.382700}
+    - {adapter: simd-json, format: json, data_size: small, time_per_iteration: 0.000001557, iterations_per_second: 642302.010405}
+    - {adapter: serde-json, format: json, data_size: medium, time_per_iteration: 0.001606163, iterations_per_second: 622.601816}
+    - {adapter: simd-json, format: json, data_size: medium, time_per_iteration: 0.001125081, iterations_per_second: 888.824893}
+    - {adapter: serde-json, format: json, data_size: large, time_per_iteration: 0.035206757, iterations_per_second: 28.403639}
+    - {adapter: simd-json, format: json, data_size: large, time_per_iteration: 0.025621187, iterations_per_second: 39.030198}
+  generation:
+    - {adapter: serde-json, format: json, data_size: small, time_per_iteration: 0.000001693, iterations_per_second: 590597.684857}
+    - {adapter: simd-json, format: json, data_size: small, time_per_iteration: 0.000002304, iterations_per_second: 433971.271102}
+    - {adapter: serde-json, format: json, data_size: medium, time_per_iteration: 0.002786554, iterations_per_second: 358.866227}
+    - {adapter: simd-json, format: json, data_size: medium, time_per_iteration: 0.001908467, iterations_per_second: 523.980674}
+    - {adapter: serde-json, format: json, data_size: large, time_per_iteration: 0.040929473, iterations_per_second: 24.432272}
+    - {adapter: simd-json, format: json, data_size: large, time_per_iteration: 0.035533117, iterations_per_second: 28.142760}
+  xpath:
