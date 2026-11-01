@@ -1,0 +1,54 @@
+platform:
+  platform_string: ubuntu-22.04-c-native
+  kind: native
+  os: linux
+  arch: x86_64
+  runtime: c
+  runtime_version: clang
+benchmark_config:
+  name: c-full
+  formats: [xml, html, json, yaml, toml]
+  operations: [parsing, xslt]
+serializers:
+    - {name: leptris, format: xml, version: '1.9.400', features: {xpath: true, html5: true, xslt: true}}
+    - {name: yyjson, format: json, version: '0.13.0', features: {}}
+    - {name: cjson, format: json, version: '1.7.19', features: {}}
+    - {name: expat, format: xml, version: 'expat_2.4.7', features: {}}
+    - {name: libxml2, format: xml, version: '2.9.13', features: {xpath: true}}
+    - {name: libxslt, format: xml, version: '1.1.34', features: {xslt: true}}
+    - {name: yeptris, format: json, version: '0.6.53', features: {}}
+    - {name: yeptris, format: yaml, version: '0.6.53', features: {}}
+    - {name: jansson, format: json, version: '2.13.1', features: {}}
+    - {name: nlohmann-json, format: json, version: '3.x', features: {}}
+    - {name: rapidyaml, format: yaml, version: '0.7', features: {}}
+    - {name: tomlc17, format: toml, version: '0.x', features: {}}
+    - {name: libyaml, format: yaml, version: '0.2.2', features: {}}
+    - {name: teptris, format: toml, version: '0.3.17', features: {}}
+    - {name: libcbor, format: cbor, version: '0.14', features: {}}
+    - {name: yeptris, format: cbor, version: '0.6.53', features: {}}
+    - {name: simdjson, format: json, version: '3.13.0', features: {}}
+    - {name: pugixml, format: xml, version: '1.16', features: {}}
+    - {name: rapidyaml, format: yaml, version: '0.7', features: {}}
+benchmark_result:
+  parsing:
+    - {adapter: yeptris, format: yaml, data_size: small, time_per_iteration: 0.000006387, iterations_per_second: 156568.028900}
+    - {adapter: libyaml, format: yaml, data_size: small, time_per_iteration: 0.000005852, iterations_per_second: 170878.830072}
+    - {adapter: yeptris, format: yaml, data_size: medium, time_per_iteration: 0.002008981, iterations_per_second: 497.764870}
+    - {adapter: libyaml, format: yaml, data_size: medium, time_per_iteration: 0.004342281, iterations_per_second: 230.293727}
+    - {adapter: yeptris, format: yaml, data_size: large, time_per_iteration: 0.028432398, iterations_per_second: 35.171145}
+    - {adapter: libyaml, format: yaml, data_size: large, time_per_iteration: 0.053906054, iterations_per_second: 18.550792}
+    - {adapter: rapidyaml, format: yaml, data_size: small, time_per_iteration: 0.000001130, iterations_per_second: 884642.600144}
+    - {adapter: rapidyaml, format: yaml, data_size: medium, time_per_iteration: 0.001226674, iterations_per_second: 815.212296}
+    - {adapter: rapidyaml, format: yaml, data_size: large, time_per_iteration: 0.039921389, iterations_per_second: 25.049229}
+  generation:
+    - {adapter: yeptris, format: yaml, data_size: small, time_per_iteration: 0.000009246, iterations_per_second: 108157.217284}
+    - {adapter: libyaml, format: yaml, data_size: small, time_per_iteration: 0.000009104, iterations_per_second: 109841.827870}
+    - {adapter: yeptris, format: yaml, data_size: medium, time_per_iteration: 0.003268753, iterations_per_second: 305.927093}
+    - {adapter: libyaml, format: yaml, data_size: medium, time_per_iteration: 0.006537156, iterations_per_second: 152.971728}
+    - {adapter: yeptris, format: yaml, data_size: large, time_per_iteration: 0.051038139, iterations_per_second: 19.593191}
+    - {adapter: libyaml, format: yaml, data_size: large, time_per_iteration: 0.082956355, iterations_per_second: 12.054532}
+    - {adapter: rapidyaml, format: yaml, data_size: small, time_per_iteration: 0.000001483, iterations_per_second: 674308.830961}
+    - {adapter: rapidyaml, format: yaml, data_size: medium, time_per_iteration: 0.001566782, iterations_per_second: 638.250750}
+    - {adapter: rapidyaml, format: yaml, data_size: large, time_per_iteration: 0.044149057, iterations_per_second: 22.650540}
+  xpath:
+  xslt:
