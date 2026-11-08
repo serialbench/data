@@ -1,0 +1,29 @@
+platform:
+  platform_string: ubuntu-24.04-arm-js-24.22.2
+  kind: wasm
+  os: linux
+  arch: arm64
+  runtime: js
+  runtime_version: 24.22.2
+benchmark_config:
+  name: js-full
+  formats: [json, xml, html, yaml, toml]
+  operations: [parsing, generation, xpath]
+benchmark_result:
+  serializers:
+    - {name: leptris, format: xml, version: '0.1.23', features: {xpath: true, wasm: true}}
+    - {name: teptris, format: toml, version: '0.3.13', features: {wasm: true}}
+    - {name: native-json, format: json, version: '24.22.2', features: {native: true}}
+    - {name: fast-xml-parser, format: xml, version: '5.11.2', features: {}}
+    - {name: htmlparser2, format: html, version: '12.0.0', features: {}}
+    - {name: yaml22, format: yaml, version: '2.9.1', features: {}}
+    - {name: smol-toml, format: toml, version: '1.9.1', features: {}}
+  parsing:
+    - {adapter: native-json, format: json, data_size: small, time_per_iteration: 0.000005082, iterations_per_second: 196784.540606}
+    - {adapter: native-json, format: json, data_size: medium, time_per_iteration: 0.001178763, iterations_per_second: 848.346954}
+    - {adapter: native-json, format: json, data_size: large, time_per_iteration: 0.011640065, iterations_per_second: 85.910173}
+  generation:
+    - {adapter: native-json, format: json, data_size: small, time_per_iteration: 0.000002534, iterations_per_second: 394679.717409}
+    - {adapter: native-json, format: json, data_size: medium, time_per_iteration: 0.001755809, iterations_per_second: 569.537922}
+    - {adapter: native-json, format: json, data_size: large, time_per_iteration: 0.015982226, iterations_per_second: 62.569507}
+  xpath:
