@@ -1,0 +1,330 @@
+---
+platform:
+  platform_string: ubuntu-22.04-ruby-3.2
+  kind: local
+  os: linux
+  arch: x86_64
+  ruby_version: '3.2'
+  ruby_build_tag: '3.2'
+metadata:
+  benchmark_config_path: config/benchmarks/full-cbor.yml
+  environment_config_path: config/environments/ci-ruby-3.2.yml
+  tags:
+  - local
+  - linux
+  - x86_64
+  - ruby-3.2
+environment_config:
+  name: ci-ruby-3.2-ubuntu-22.04
+  description: CI environment for Ruby 3.2 on ubuntu-22.04
+  kind: local
+  created_at: '2026-11-25T05:15:18Z'
+  ruby_build_tag: '3.2'
+benchmark_config:
+  name: full-cbor
+  data_sizes:
+  - small
+  - medium
+  - large
+  formats:
+  - cbor
+  iterations:
+    small: 10
+    medium: 3
+    large: 1
+  warmup: 2
+  operations:
+  - parsing
+  - generation
+  - memory
+benchmark_result:
+  serializers:
+  - format: xml
+    name: rexml
+    version: 3.4.4
+    features:
+      xpath: true
+      namespaces: true
+      validation: false
+      streaming: false
+      stax: false
+  - format: xml
+    name: ox
+    version: 2.14.29
+    features:
+      xpath: false
+      namespaces: true
+      validation: false
+      streaming: true
+      stax: false
+  - format: xml
+    name: nokogiri
+    version: 1.19.7
+    features:
+      xpath: true
+      namespaces: true
+      validation: true
+      streaming: true
+      stax: true
+  - format: xml
+    name: oga
+    version: '3.5'
+    features:
+      xpath: true
+      namespaces: true
+      validation: false
+      streaming: true
+      stax: false
+  - format: xml
+    name: leptris
+    version: 1.9.385.0
+    features:
+      xpath: true
+      namespaces: true
+      validation: true
+      streaming: true
+      stax: true
+  - format: xml
+    name: saxon-he
+    features:
+      xslt_version: '3.0'
+      cold_process: true
+  - format: json
+    name: json
+    version: 3.2.0
+    features:
+      pretty_print: true
+      streaming: false
+      symbol_keys: false
+      custom_types: false
+  - format: json
+    name: oj
+    version: 3.17.8
+    features:
+      pretty_print: true
+      streaming: true
+      symbol_keys: true
+      custom_types: true
+  - format: json
+    name: rapidjson
+    version: 0.4.0
+    features:
+      pretty_print: true
+      streaming: false
+      symbol_keys: false
+      custom_types: false
+  - format: json
+    name: yajl
+    version: 1.4.3
+    features:
+      pretty_print: true
+      streaming: true
+      symbol_keys: false
+      custom_types: false
+  - format: json
+    name: yeptris-json
+    version: 0.6.48.0
+    features:
+      pretty_print: false
+      streaming: false
+      symbol_keys: false
+      custom_types: false
+  - format: html
+    name: nokogiri
+    version: 1.19.7
+    features:
+      html5: true
+      xpath: true
+  - format: html
+    name: oga
+    version: '3.5'
+    features:
+      html5: false
+      xpath: false
+  - format: html
+    name: leptris
+    version: 1.9.385.0
+    features:
+      html5: false
+      xpath: true
+  - format: html
+    name: leptris-whatwg
+    version: 1.9.385.0
+    features:
+      html5: true
+      xpath: true
+  - format: yaml
+    name: psych
+    version: 5.0.1
+    features:
+      streaming: false
+  - format: yaml
+    name: yeptris-yaml
+    version: 0.6.48.0
+    features:
+      streaming: true
+  - format: toml
+    name: toml-rb
+    version: 6.0.0
+    features:
+      comments: false
+      arrays_of_tables: true
+      inline_tables: true
+      multiline_strings: true
+  - format: toml
+    name: tomlib
+    version: 0.7.3
+    features:
+      comments: false
+      arrays_of_tables: true
+      inline_tables: true
+      multiline_strings: true
+  - format: toml
+    name: tomlrb
+    version: 2.0.5
+    features:
+      comments: false
+      arrays_of_tables: true
+      inline_tables: true
+      multiline_strings: true
+  - format: cbor
+    name: cbor
+    version: 0.6.2.2
+    features:
+      streaming: false
+      canonical: false
+  - format: cbor
+    name: yeptris-cbor
+    version: 0.6.48.0
+    features:
+      streaming: false
+      canonical: false
+  parsing:
+  - adapter: cbor
+    format: cbor
+    data_size: small
+    time_per_iterations: 2.642000004016154e-05
+    time_per_iteration: 2.642000004016154e-06
+    iterations_per_second: 378501.1349280398
+    iterations_count: 10
+  - adapter: yeptris-cbor
+    format: cbor
+    data_size: small
+    time_per_iterations: 9.726799999043578e-05
+    time_per_iteration: 9.726799999043578e-06
+    iterations_per_second: 102808.7346402032
+    iterations_count: 10
+  - adapter: cbor
+    format: cbor
+    data_size: medium
+    time_per_iterations: 0.003975159000106032
+    time_per_iteration: 0.001325053000035344
+    iterations_per_second: 754.6867936401987
+    iterations_count: 3
+  - adapter: yeptris-cbor
+    format: cbor
+    data_size: medium
+    time_per_iterations: 0.014096378999965964
+    time_per_iteration: 0.004698792999988655
+    iterations_per_second: 212.82061159161822
+    iterations_count: 3
+  - adapter: cbor
+    format: cbor
+    data_size: large
+    time_per_iterations: 0.023951893999992535
+    time_per_iteration: 0.023951893999992535
+    iterations_per_second: 41.75035176760183
+    iterations_count: 1
+  - adapter: yeptris-cbor
+    format: cbor
+    data_size: large
+    time_per_iterations: 0.08650632600006247
+    time_per_iteration: 0.08650632600006247
+    iterations_per_second: 11.559848235830497
+    iterations_count: 1
+  generation:
+  - adapter: cbor
+    format: cbor
+    data_size: small
+    time_per_iterations: 2.6840999908017693e-05
+    time_per_iteration: 2.6840999908017692e-06
+    iterations_per_second: 372564.3617700283
+    iterations_count: 10
+  - adapter: yeptris-cbor
+    format: cbor
+    data_size: small
+    time_per_iterations: 0.0004756739999720594
+    time_per_iteration: 4.756739999720594e-05
+    iterations_per_second: 21022.801331557726
+    iterations_count: 10
+  - adapter: cbor
+    format: cbor
+    data_size: medium
+    time_per_iterations: 0.0026989970000386165
+    time_per_iteration: 0.0008996656666795388
+    iterations_per_second: 1111.5240216854916
+    iterations_count: 3
+  - adapter: yeptris-cbor
+    format: cbor
+    data_size: medium
+    time_per_iterations: 0.11044908599990322
+    time_per_iteration: 0.03681636199996774
+    iterations_per_second: 27.161836359629348
+    iterations_count: 3
+  - adapter: cbor
+    format: cbor
+    data_size: large
+    time_per_iterations: 0.0240205690000721
+    time_per_iteration: 0.0240205690000721
+    iterations_per_second: 41.63098717590738
+    iterations_count: 1
+  - adapter: yeptris-cbor
+    format: cbor
+    data_size: large
+    time_per_iterations: 0.6588124219999827
+    time_per_iteration: 0.6588124219999827
+    iterations_per_second: 1.517882733546919
+    iterations_count: 1
+  memory:
+  - adapter: cbor
+    format: cbor
+    data_size: small
+    total_allocated: 200
+    total_retained: 0
+    allocated_memory: 17200
+    retained_memory: 0
+  - adapter: yeptris-cbor
+    format: cbor
+    data_size: small
+    total_allocated: 464
+    total_retained: 0
+    allocated_memory: 32080
+    retained_memory: 0
+  - adapter: cbor
+    format: cbor
+    data_size: medium
+    total_allocated: 180060
+    total_retained: 0
+    allocated_memory: 11927760
+    retained_memory: 0
+  - adapter: yeptris-cbor
+    format: cbor
+    data_size: medium
+    total_allocated: 330184
+    total_retained: 0
+    allocated_memory: 20479320
+    retained_memory: 0
+  - adapter: cbor
+    format: cbor
+    data_size: large
+    total_allocated: 240015
+    total_retained: 0
+    allocated_memory: 13921432
+    retained_memory: 0
+  - adapter: yeptris-cbor
+    format: cbor
+    data_size: large
+    total_allocated: 440040
+    total_retained: 0
+    allocated_memory: 25203473
+    retained_memory: 0
