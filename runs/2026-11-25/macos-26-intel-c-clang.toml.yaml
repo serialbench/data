@@ -1,0 +1,54 @@
+platform:
+  platform_string: macos-26-intel-c-native
+  kind: native
+  os: macos
+  arch: x86_64
+  runtime: c
+  runtime_version: clang
+benchmark_config:
+  name: c-full
+  formats: [xml, html, json, yaml, toml]
+  operations: [parsing, generation, xpath, validation, c14n, diff, plan, xslt]
+serializers:
+    - {name: leptris, format: xml, version: '1.9.444', features: {xpath: true, html5: true, xslt: true}}
+    - {name: yyjson, format: json, version: '0.13.0', features: {}}
+    - {name: cjson, format: json, version: '1.7.19', features: {}}
+    - {name: expat, format: xml, version: 'expat_2.7.4', features: {}}
+    - {name: libxml2, format: xml, version: '2.15.3', features: {xpath: true}}
+    - {name: libxslt, format: xml, version: '1.1.35', features: {xslt: true}}
+    - {name: yeptris, format: json, version: '0.6.80', features: {}}
+    - {name: yeptris, format: yaml, version: '0.6.80', features: {}}
+    - {name: jansson, format: json, version: '2.15.1', features: {}}
+    - {name: nlohmann-json, format: json, version: '3.x', features: {}}
+    - {name: rapidyaml, format: yaml, version: '0.7', features: {}}
+    - {name: tomlc17, format: toml, version: '0.x', features: {}}
+    - {name: libyaml, format: yaml, version: '0.2.5', features: {}}
+    - {name: teptris, format: toml, version: '0.3.33', features: {}}
+    - {name: libcbor, format: cbor, version: '0.14', features: {}}
+    - {name: yeptris, format: cbor, version: '0.6.80', features: {}}
+    - {name: simdjson, format: json, version: '3.13.0', features: {}}
+    - {name: pugixml, format: xml, version: '1.16', features: {}}
+benchmark_result:
+  parsing:
+    - {adapter: teptris, format: toml, data_size: small, time_per_iteration: 0.000001500, iterations_per_second: 666666.643086}
+    - {adapter: tomlc17, format: toml, data_size: small, time_per_iteration: 0.000003700, iterations_per_second: 270270.265140}
+    - {adapter: teptris, format: toml, data_size: medium, time_per_iteration: 0.000088333, iterations_per_second: 11320.754731}
+    - {adapter: tomlc17, format: toml, data_size: medium, time_per_iteration: 0.000497333, iterations_per_second: 2010.723860}
+    - {adapter: teptris, format: toml, data_size: large, time_per_iteration: 0.001117000, iterations_per_second: 895.255148}
+    - {adapter: tomlc17, format: toml, data_size: large, time_per_iteration: 0.005119000, iterations_per_second: 195.350654}
+  generation:
+    - {adapter: teptris, format: toml, data_size: small, time_per_iteration: 0.000002500, iterations_per_second: 399999.995553}
+    - {adapter: teptris, format: toml, data_size: medium, time_per_iteration: 0.000209000, iterations_per_second: 4784.688993}
+    - {adapter: teptris, format: toml, data_size: large, time_per_iteration: 0.002361000, iterations_per_second: 423.549344}
+  xpath:
+  validation:
+    - {adapter: teptris-schema, format: toml, data_size: small, time_per_iteration: 0.000005900, iterations_per_second: 169491.525525}
+    - {adapter: teptris-schema, format: toml, data_size: medium, time_per_iteration: 0.000551333, iterations_per_second: 1813.784764}
+    - {adapter: teptris-schema, format: toml, data_size: large, time_per_iteration: 0.007394000, iterations_per_second: 135.244793}
+  c14n:
+  diff:
+  plan:
+    - {adapter: teptris-plan, format: toml, data_size: small, time_per_iteration: 0.000002900, iterations_per_second: 344827.588429}
+    - {adapter: teptris-plan, format: toml, data_size: medium, time_per_iteration: 0.000101000, iterations_per_second: 9900.990105}
+    - {adapter: teptris-plan, format: toml, data_size: large, time_per_iteration: 0.001985000, iterations_per_second: 503.778338}
+  xslt:
