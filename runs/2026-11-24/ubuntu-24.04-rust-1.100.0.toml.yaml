@@ -1,0 +1,38 @@
+platform:
+  platform_string: ubuntu-24.04-rust-1.100.0
+  kind: native
+  os: linux
+  arch: x86_64
+  runtime: rust
+  runtime_version: 1.100.0
+benchmark_config:
+  name: rust-full
+  formats: [json, xml, yaml, toml]
+  operations: [parsing, generation, xpath]
+benchmark_result:
+  serializers:
+    - {name: leptris, format: xml, version: '1.9.0', features: {xpath: true}}
+    - {name: yeptris, format: yaml, version: '0.6.80', features: {}}
+    - {name: yeptris-json, format: json, version: '0.6.80', features: {}}
+    - {name: teptris, format: toml, version: '0.3.33', features: {}}
+    - {name: serde-json, format: json, version: '1.0.154', features: {}}
+    - {name: simd-json, format: json, version: '0.18.1', features: {}}
+    - {name: quick-xml, format: xml, version: '0.42.0', features: {}}
+    - {name: roxmltree, format: xml, version: '0.21.1', features: {}}
+    - {name: yaml-rust2, format: yaml, version: '0.13.0', features: {}}
+    - {name: toml, format: toml, version: '1.1.8', features: {}}
+  parsing:
+    - {adapter: teptris, format: toml, data_size: small, time_per_iteration: 0.000001303, iterations_per_second: 767636.447379}
+    - {adapter: toml, format: toml, data_size: small, time_per_iteration: 0.000004667, iterations_per_second: 214265.818174}
+    - {adapter: teptris, format: toml, data_size: medium, time_per_iteration: 0.000110372, iterations_per_second: 9060.241546}
+    - {adapter: toml, format: toml, data_size: medium, time_per_iteration: 0.000310095, iterations_per_second: 3224.821667}
+    - {adapter: teptris, format: toml, data_size: large, time_per_iteration: 0.002303870, iterations_per_second: 434.052269}
+    - {adapter: toml, format: toml, data_size: large, time_per_iteration: 0.005833992, iterations_per_second: 171.409217}
+  generation:
+    - {adapter: teptris, format: toml, data_size: small, time_per_iteration: 0.000005277, iterations_per_second: 189494.428864}
+    - {adapter: toml, format: toml, data_size: small, time_per_iteration: 0.000003546, iterations_per_second: 282007.896221}
+    - {adapter: teptris, format: toml, data_size: medium, time_per_iteration: 0.000181040, iterations_per_second: 5523.641184}
+    - {adapter: toml, format: toml, data_size: medium, time_per_iteration: 0.000443014, iterations_per_second: 2257.263309}
+    - {adapter: teptris, format: toml, data_size: large, time_per_iteration: 0.002311007, iterations_per_second: 432.711801}
+    - {adapter: toml, format: toml, data_size: large, time_per_iteration: 0.007274144, iterations_per_second: 137.473220}
+  xpath:
