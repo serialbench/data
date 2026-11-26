@@ -8,28 +8,40 @@ platform:
 benchmark_config:
   name: js-full
   formats: [json, xml, html, yaml, toml]
-  operations: [parsing, generation, xpath]
+  operations: [parsing, generation, xpath, validation, plan]
 benchmark_result:
   serializers:
-    - {name: leptris, format: xml, version: '0.1.23', features: {xpath: true, wasm: true}}
-    - {name: teptris, format: toml, version: '0.3.13', features: {wasm: true}}
+    - {name: leptris, format: xml, version: '0.1.82', features: {xpath: true, wasm: true}}
+    - {name: teptris, format: toml, version: '0.3.41', features: {wasm: true}}
+    - {name: yeptris, format: yaml, version: '0.6.87', features: {wasm: true}}
+    - {name: leptris-xsd, format: xml, version: '0.1.82', features: {wasm: true}}
+    - {name: leptris-schematron, format: xml, version: '0.1.82', features: {wasm: true}}
+    - {name: yeptris-plan, format: yaml, version: '0.6.87', features: {wasm: true}}
     - {name: native-json, format: json, version: '24.19.0', features: {native: true}}
     - {name: fast-xml-parser, format: xml, version: '5.11.2', features: {}}
     - {name: htmlparser2, format: html, version: '12.0.0', features: {}}
     - {name: yaml22, format: yaml, version: '2.9.1', features: {}}
     - {name: smol-toml, format: toml, version: '1.9.1', features: {}}
   parsing:
-    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000033027, iterations_per_second: 30278.532218}
-    - {adapter: fast-xml-parser, format: xml, data_size: small, time_per_iteration: 0.000333331, iterations_per_second: 3000.021000}
-    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.002637843, iterations_per_second: 379.097571}
-    - {adapter: fast-xml-parser, format: xml, data_size: medium, time_per_iteration: 0.036790544, iterations_per_second: 27.180898}
-    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.031520725, iterations_per_second: 31.725159}
-    - {adapter: fast-xml-parser, format: xml, data_size: large, time_per_iteration: 0.536598717, iterations_per_second: 1.863590}
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000080446, iterations_per_second: 12430.729758}
+    - {adapter: fast-xml-parser, format: xml, data_size: small, time_per_iteration: 0.000187353, iterations_per_second: 5337.532192}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.002852146, iterations_per_second: 350.613146}
+    - {adapter: fast-xml-parser, format: xml, data_size: medium, time_per_iteration: 0.040254026, iterations_per_second: 24.842236}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.045548453, iterations_per_second: 21.954642}
+    - {adapter: fast-xml-parser, format: xml, data_size: large, time_per_iteration: 0.532332229, iterations_per_second: 1.878526}
   generation:
-    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000041354, iterations_per_second: 24181.516133}
-    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.005076379, iterations_per_second: 196.990795}
-    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.080648470, iterations_per_second: 12.399491}
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000034320, iterations_per_second: 29137.868740}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.005803387, iterations_per_second: 172.313168}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.070954291, iterations_per_second: 14.093580}
   xpath:
-    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000071374, iterations_per_second: 14010.704178}
-    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.004403153, iterations_per_second: 227.110000}
-    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.061043957, iterations_per_second: 16.381638}
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000036033, iterations_per_second: 27751.953044}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.003644253, iterations_per_second: 274.404659}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.051093720, iterations_per_second: 19.571877}
+  validation:
+    - {adapter: leptris-xsd, format: xml, data_size: small, time_per_iteration: 0.000043445, iterations_per_second: 23017.608470}
+    - {adapter: leptris-schematron, format: xml, data_size: small, time_per_iteration: 0.000057157, iterations_per_second: 17495.516774}
+    - {adapter: leptris-xsd, format: xml, data_size: medium, time_per_iteration: 0.014006820, iterations_per_second: 71.393791}
+    - {adapter: leptris-schematron, format: xml, data_size: medium, time_per_iteration: 0.011225740, iterations_per_second: 89.080984}
+    - {adapter: leptris-xsd, format: xml, data_size: large, time_per_iteration: 0.163497416, iterations_per_second: 6.116305}
+    - {adapter: leptris-schematron, format: xml, data_size: large, time_per_iteration: 0.209965468, iterations_per_second: 4.762688}
+  plan:
