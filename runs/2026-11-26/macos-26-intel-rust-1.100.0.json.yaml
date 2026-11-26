@@ -1,0 +1,44 @@
+platform:
+  platform_string: macos-26-intel-rust-1.100.0
+  kind: native
+  os: macos
+  arch: x86_64
+  runtime: rust
+  runtime_version: 1.100.0
+benchmark_config:
+  name: rust-full
+  formats: [json, xml, yaml, toml]
+  operations: [parsing, generation, xpath]
+benchmark_result:
+  serializers:
+    - {name: leptris, format: xml, version: '1.9.0', features: {xpath: true}}
+    - {name: yeptris, format: yaml, version: '0.6.87', features: {}}
+    - {name: yeptris-json, format: json, version: '0.6.87', features: {}}
+    - {name: teptris, format: toml, version: '0.3.33', features: {}}
+    - {name: serde-json, format: json, version: '1.0.154', features: {}}
+    - {name: simd-json, format: json, version: '0.18.1', features: {}}
+    - {name: quick-xml, format: xml, version: '0.42.0', features: {}}
+    - {name: roxmltree, format: xml, version: '0.21.1', features: {}}
+    - {name: yaml-rust2, format: yaml, version: '0.13.0', features: {}}
+    - {name: toml, format: toml, version: '1.1.8', features: {}}
+  parsing:
+    - {adapter: serde-json, format: json, data_size: small, time_per_iteration: 0.000002322, iterations_per_second: 430737.422467}
+    - {adapter: simd-json, format: json, data_size: small, time_per_iteration: 0.000002989, iterations_per_second: 334593.636029}
+    - {adapter: yeptris-json, format: json, data_size: small, time_per_iteration: 0.000002413, iterations_per_second: 414507.772021}
+    - {adapter: serde-json, format: json, data_size: medium, time_per_iteration: 0.002675662, iterations_per_second: 373.739237}
+    - {adapter: simd-json, format: json, data_size: medium, time_per_iteration: 0.002088246, iterations_per_second: 478.870784}
+    - {adapter: yeptris-json, format: json, data_size: medium, time_per_iteration: 0.002301150, iterations_per_second: 434.565263}
+    - {adapter: serde-json, format: json, data_size: large, time_per_iteration: 0.045226187, iterations_per_second: 22.111084}
+    - {adapter: simd-json, format: json, data_size: large, time_per_iteration: 0.029070447, iterations_per_second: 34.399196}
+    - {adapter: yeptris-json, format: json, data_size: large, time_per_iteration: 0.031992137, iterations_per_second: 31.257681}
+  generation:
+    - {adapter: serde-json, format: json, data_size: small, time_per_iteration: 0.000002913, iterations_per_second: 343347.639485}
+    - {adapter: simd-json, format: json, data_size: small, time_per_iteration: 0.000005088, iterations_per_second: 196552.469682}
+    - {adapter: yeptris-json, format: json, data_size: small, time_per_iteration: 0.000003462, iterations_per_second: 288850.375505}
+    - {adapter: serde-json, format: json, data_size: medium, time_per_iteration: 0.003230225, iterations_per_second: 309.575958}
+    - {adapter: simd-json, format: json, data_size: medium, time_per_iteration: 0.004135469, iterations_per_second: 241.810542}
+    - {adapter: yeptris-json, format: json, data_size: medium, time_per_iteration: 0.003186098, iterations_per_second: 313.863574}
+    - {adapter: serde-json, format: json, data_size: large, time_per_iteration: 0.058087147, iterations_per_second: 17.215512}
+    - {adapter: simd-json, format: json, data_size: large, time_per_iteration: 0.048930187, iterations_per_second: 20.437281}
+    - {adapter: yeptris-json, format: json, data_size: large, time_per_iteration: 0.042576441, iterations_per_second: 23.487167}
+  xpath:
