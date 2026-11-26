@@ -1,0 +1,35 @@
+platform:
+  platform_string: windows-2025-js-24.22.3
+  kind: wasm
+  os: windows
+  arch: x86_64
+  runtime: js
+  runtime_version: 24.22.3
+benchmark_config:
+  name: js-full
+  formats: [json, xml, html, yaml, toml]
+  operations: [parsing, generation, xpath]
+benchmark_result:
+  serializers:
+    - {name: leptris, format: xml, version: '0.1.23', features: {xpath: true, wasm: true}}
+    - {name: teptris, format: toml, version: '0.3.13', features: {wasm: true}}
+    - {name: native-json, format: json, version: '24.22.3', features: {native: true}}
+    - {name: fast-xml-parser, format: xml, version: '5.11.2', features: {}}
+    - {name: htmlparser2, format: html, version: '12.0.0', features: {}}
+    - {name: yaml22, format: yaml, version: '2.9.1', features: {}}
+    - {name: smol-toml, format: toml, version: '1.9.1', features: {}}
+  parsing:
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000014800, iterations_per_second: 67567.567568}
+    - {adapter: fast-xml-parser, format: xml, data_size: small, time_per_iteration: 0.000177670, iterations_per_second: 5628.412225}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.002623533, iterations_per_second: 381.165350}
+    - {adapter: fast-xml-parser, format: xml, data_size: medium, time_per_iteration: 0.027082100, iterations_per_second: 36.924758}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.018213500, iterations_per_second: 54.904329}
+    - {adapter: fast-xml-parser, format: xml, data_size: large, time_per_iteration: 0.349181700, iterations_per_second: 2.863839}
+  generation:
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000019510, iterations_per_second: 51255.766274}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.002949600, iterations_per_second: 339.029021}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.039533100, iterations_per_second: 25.295259}
+  xpath:
+    - {adapter: leptris, format: xml, data_size: small, time_per_iteration: 0.000022450, iterations_per_second: 44543.429844}
+    - {adapter: leptris, format: xml, data_size: medium, time_per_iteration: 0.002554533, iterations_per_second: 391.460932}
+    - {adapter: leptris, format: xml, data_size: large, time_per_iteration: 0.041738400, iterations_per_second: 23.958753}
