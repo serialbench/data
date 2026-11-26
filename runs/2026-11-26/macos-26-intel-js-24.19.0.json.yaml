@@ -8,22 +8,28 @@ platform:
 benchmark_config:
   name: js-full
   formats: [json, xml, html, yaml, toml]
-  operations: [parsing, generation, xpath]
+  operations: [parsing, generation, xpath, validation, plan]
 benchmark_result:
   serializers:
-    - {name: leptris, format: xml, version: '0.1.23', features: {xpath: true, wasm: true}}
-    - {name: teptris, format: toml, version: '0.3.13', features: {wasm: true}}
+    - {name: leptris, format: xml, version: '0.1.82', features: {xpath: true, wasm: true}}
+    - {name: teptris, format: toml, version: '0.3.41', features: {wasm: true}}
+    - {name: yeptris, format: yaml, version: '0.6.87', features: {wasm: true}}
+    - {name: leptris-xsd, format: xml, version: '0.1.82', features: {wasm: true}}
+    - {name: leptris-schematron, format: xml, version: '0.1.82', features: {wasm: true}}
+    - {name: yeptris-plan, format: yaml, version: '0.6.87', features: {wasm: true}}
     - {name: native-json, format: json, version: '24.19.0', features: {native: true}}
     - {name: fast-xml-parser, format: xml, version: '5.11.2', features: {}}
     - {name: htmlparser2, format: html, version: '12.0.0', features: {}}
     - {name: yaml22, format: yaml, version: '2.9.1', features: {}}
     - {name: smol-toml, format: toml, version: '1.9.1', features: {}}
   parsing:
-    - {adapter: native-json, format: json, data_size: small, time_per_iteration: 0.000014713, iterations_per_second: 67969.413764}
-    - {adapter: native-json, format: json, data_size: medium, time_per_iteration: 0.016563132, iterations_per_second: 60.375056}
-    - {adapter: native-json, format: json, data_size: large, time_per_iteration: 0.037150744, iterations_per_second: 26.917361}
+    - {adapter: native-json, format: json, data_size: small, time_per_iteration: 0.000005420, iterations_per_second: 184508.653456}
+    - {adapter: native-json, format: json, data_size: medium, time_per_iteration: 0.002403991, iterations_per_second: 415.974935}
+    - {adapter: native-json, format: json, data_size: large, time_per_iteration: 0.022668826, iterations_per_second: 44.113445}
   generation:
-    - {adapter: native-json, format: json, data_size: small, time_per_iteration: 0.000007781, iterations_per_second: 128526.444316}
-    - {adapter: native-json, format: json, data_size: medium, time_per_iteration: 0.003147842, iterations_per_second: 317.677952}
-    - {adapter: native-json, format: json, data_size: large, time_per_iteration: 0.049554001, iterations_per_second: 20.180005}
+    - {adapter: native-json, format: json, data_size: small, time_per_iteration: 0.000005105, iterations_per_second: 195897.898016}
+    - {adapter: native-json, format: json, data_size: medium, time_per_iteration: 0.004345497, iterations_per_second: 230.123275}
+    - {adapter: native-json, format: json, data_size: large, time_per_iteration: 0.027120542, iterations_per_second: 36.872419}
   xpath:
+  validation:
+  plan:
