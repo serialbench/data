@@ -8,22 +8,37 @@ platform:
 benchmark_config:
   name: js-full
   formats: [json, xml, html, yaml, toml]
-  operations: [parsing, generation, xpath]
+  operations: [parsing, generation, xpath, validation, plan]
 benchmark_result:
   serializers:
-    - {name: leptris, format: xml, version: '0.1.23', features: {xpath: true, wasm: true}}
-    - {name: teptris, format: toml, version: '0.3.13', features: {wasm: true}}
+    - {name: leptris, format: xml, version: '0.1.82', features: {xpath: true, wasm: true}}
+    - {name: teptris, format: toml, version: '0.3.41', features: {wasm: true}}
+    - {name: yeptris, format: yaml, version: '0.6.87', features: {wasm: true}}
+    - {name: leptris-xsd, format: xml, version: '0.1.82', features: {wasm: true}}
+    - {name: leptris-schematron, format: xml, version: '0.1.82', features: {wasm: true}}
+    - {name: yeptris-plan, format: yaml, version: '0.6.87', features: {wasm: true}}
     - {name: native-json, format: json, version: '24.19.0', features: {native: true}}
     - {name: fast-xml-parser, format: xml, version: '5.11.2', features: {}}
     - {name: htmlparser2, format: html, version: '12.0.0', features: {}}
     - {name: yaml22, format: yaml, version: '2.9.1', features: {}}
     - {name: smol-toml, format: toml, version: '1.9.1', features: {}}
   parsing:
-    - {adapter: yaml22, format: yaml, data_size: small, time_per_iteration: 0.000863931, iterations_per_second: 1157.499311}
-    - {adapter: yaml22, format: yaml, data_size: medium, time_per_iteration: 0.152651994, iterations_per_second: 6.550848}
-    - {adapter: yaml22, format: yaml, data_size: large, time_per_iteration: 1.826700494, iterations_per_second: 0.547435}
+    - {adapter: yeptris, format: yaml, data_size: small, time_per_iteration: 0.000075687, iterations_per_second: 13212.273674}
+    - {adapter: yaml22, format: yaml, data_size: small, time_per_iteration: 0.000528020, iterations_per_second: 1893.866581}
+    - {adapter: yeptris, format: yaml, data_size: medium, time_per_iteration: 0.012554091, iterations_per_second: 79.655309}
+    - {adapter: yaml22, format: yaml, data_size: medium, time_per_iteration: 0.156876860, iterations_per_second: 6.374426}
+    - {adapter: yeptris, format: yaml, data_size: large, time_per_iteration: 0.161725142, iterations_per_second: 6.183330}
+    - {adapter: yaml22, format: yaml, data_size: large, time_per_iteration: 2.155961099, iterations_per_second: 0.463830}
   generation:
-    - {adapter: yaml22, format: yaml, data_size: small, time_per_iteration: 0.001102406, iterations_per_second: 907.106572}
-    - {adapter: yaml22, format: yaml, data_size: medium, time_per_iteration: 0.207424296, iterations_per_second: 4.821036}
-    - {adapter: yaml22, format: yaml, data_size: large, time_per_iteration: 2.587911327, iterations_per_second: 0.386412}
+    - {adapter: yeptris, format: yaml, data_size: small, time_per_iteration: 0.000107547, iterations_per_second: 9298.234358}
+    - {adapter: yaml22, format: yaml, data_size: small, time_per_iteration: 0.000770111, iterations_per_second: 1298.513942}
+    - {adapter: yeptris, format: yaml, data_size: medium, time_per_iteration: 0.022205864, iterations_per_second: 45.033150}
+    - {adapter: yaml22, format: yaml, data_size: medium, time_per_iteration: 0.232321573, iterations_per_second: 4.304379}
+    - {adapter: yeptris, format: yaml, data_size: large, time_per_iteration: 0.694848594, iterations_per_second: 1.439162}
+    - {adapter: yaml22, format: yaml, data_size: large, time_per_iteration: 2.800341201, iterations_per_second: 0.357099}
   xpath:
+  validation:
+  plan:
+    - {adapter: yeptris-plan, format: yaml, data_size: small, time_per_iteration: 0.000046176, iterations_per_second: 21656.177858}
+    - {adapter: yeptris-plan, format: yaml, data_size: medium, time_per_iteration: 0.008762316, iterations_per_second: 114.125074}
+    - {adapter: yeptris-plan, format: yaml, data_size: large, time_per_iteration: 0.172683496, iterations_per_second: 5.790941}
