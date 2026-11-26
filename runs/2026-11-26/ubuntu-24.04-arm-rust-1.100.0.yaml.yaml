@@ -1,0 +1,38 @@
+platform:
+  platform_string: ubuntu-24.04-arm-rust-1.100.0
+  kind: native
+  os: linux
+  arch: arm64
+  runtime: rust
+  runtime_version: 1.100.0
+benchmark_config:
+  name: rust-full
+  formats: [json, xml, yaml, toml]
+  operations: [parsing, generation, xpath]
+benchmark_result:
+  serializers:
+    - {name: leptris, format: xml, version: '1.9.0', features: {xpath: true}}
+    - {name: yeptris, format: yaml, version: '0.6.85', features: {}}
+    - {name: yeptris-json, format: json, version: '0.6.85', features: {}}
+    - {name: teptris, format: toml, version: '0.3.33', features: {}}
+    - {name: serde-json, format: json, version: '1.0.154', features: {}}
+    - {name: simd-json, format: json, version: '0.18.1', features: {}}
+    - {name: quick-xml, format: xml, version: '0.42.0', features: {}}
+    - {name: roxmltree, format: xml, version: '0.21.1', features: {}}
+    - {name: yaml-rust2, format: yaml, version: '0.13.0', features: {}}
+    - {name: toml, format: toml, version: '1.1.8', features: {}}
+  parsing:
+    - {adapter: yeptris, format: yaml, data_size: small, time_per_iteration: 0.000003012, iterations_per_second: 331994.289698}
+    - {adapter: yaml-rust2, format: yaml, data_size: small, time_per_iteration: 0.000010890, iterations_per_second: 91825.678133}
+    - {adapter: yeptris, format: yaml, data_size: medium, time_per_iteration: 0.001856560, iterations_per_second: 538.630682}
+    - {adapter: yaml-rust2, format: yaml, data_size: medium, time_per_iteration: 0.007794633, iterations_per_second: 128.293404}
+    - {adapter: yeptris, format: yaml, data_size: large, time_per_iteration: 0.025005968, iterations_per_second: 39.990453}
+    - {adapter: yaml-rust2, format: yaml, data_size: large, time_per_iteration: 0.097194909, iterations_per_second: 10.288605}
+  generation:
+    - {adapter: yeptris, format: yaml, data_size: small, time_per_iteration: 0.000004743, iterations_per_second: 210854.805381}
+    - {adapter: yaml-rust2, format: yaml, data_size: small, time_per_iteration: 0.000008720, iterations_per_second: 114682.844593}
+    - {adapter: yeptris, format: yaml, data_size: medium, time_per_iteration: 0.003002057, iterations_per_second: 333.104934}
+    - {adapter: yaml-rust2, format: yaml, data_size: medium, time_per_iteration: 0.008954779, iterations_per_second: 111.672210}
+    - {adapter: yeptris, format: yaml, data_size: large, time_per_iteration: 0.045149626, iterations_per_second: 22.148578}
+    - {adapter: yaml-rust2, format: yaml, data_size: large, time_per_iteration: 0.114210404, iterations_per_second: 8.755770}
+  xpath:
