@@ -1,0 +1,364 @@
+---
+platform:
+  platform_string: windows-11-arm-ruby-3.4
+  kind: local
+  os: windows
+  arch: arm64
+  ruby_version: '3.4'
+  ruby_build_tag: '3.4'
+metadata:
+  benchmark_config_path: config/benchmarks/full-yaml.yml
+  environment_config_path: config/environments/ci-ruby-3.4.yml
+  tags:
+  - local
+  - windows
+  - arm64
+  - ruby-3.4
+environment_config:
+  name: ci-ruby-3.4-windows-11-arm
+  description: CI environment for Ruby 3.4 on windows-11-arm
+  kind: local
+  created_at: '2026-11-27T02:11:55Z'
+  ruby_build_tag: '3.4'
+benchmark_config:
+  name: full-yaml
+  data_sizes:
+  - small
+  - medium
+  - large
+  formats:
+  - yaml
+  iterations:
+    small: 10
+    medium: 3
+    large: 1
+  warmup: 2
+  operations:
+  - parsing
+  - generation
+  - streaming
+  - memory
+benchmark_result:
+  serializers:
+  - format: xml
+    name: rexml
+    version: 3.4.4
+    features:
+      xpath: true
+      namespaces: true
+      validation: false
+      streaming: false
+      stax: false
+  - format: xml
+    name: ox
+    version: 2.14.30
+    features:
+      xpath: false
+      namespaces: true
+      validation: false
+      streaming: true
+      stax: false
+  - format: xml
+    name: oga
+    version: '3.5'
+    features:
+      xpath: true
+      namespaces: true
+      validation: false
+      streaming: true
+      stax: false
+  - format: xml
+    name: leptris
+    version: 1.9.443.0
+    features:
+      xpath: true
+      namespaces: true
+      validation: true
+      streaming: true
+      stax: true
+  - format: xml
+    name: leptris-xsd
+    version: 1.9.443.0
+    features:
+      xpath: false
+      namespaces: false
+      validation: true
+      streaming: false
+      stax: false
+  - format: xml
+    name: leptris-schematron
+    version: 1.9.443.0
+    features:
+      xpath: false
+      namespaces: false
+      validation: true
+      streaming: false
+      stax: false
+  - format: xml
+    name: saxon-he
+    features:
+      xslt_version: '3.0'
+      cold_process: true
+  - format: json
+    name: json
+    version: 3.2.0
+    features:
+      pretty_print: true
+      streaming: false
+      symbol_keys: false
+      custom_types: false
+  - format: json
+    name: oj
+    version: 3.17.8
+    features:
+      pretty_print: true
+      streaming: true
+      symbol_keys: true
+      custom_types: true
+  - format: json
+    name: rapidjson
+    version: 0.4.0
+    features:
+      pretty_print: true
+      streaming: false
+      symbol_keys: false
+      custom_types: false
+  - format: json
+    name: yajl
+    version: 1.4.3
+    features:
+      pretty_print: true
+      streaming: true
+      symbol_keys: false
+      custom_types: false
+  - format: json
+    name: yeptris-json
+    version: 0.6.79.0
+    features:
+      pretty_print: false
+      streaming: false
+      symbol_keys: false
+      custom_types: false
+  - format: html
+    name: oga
+    version: '3.5'
+    features:
+      html5: false
+      xpath: false
+  - format: html
+    name: leptris
+    version: 1.9.443.0
+    features:
+      html5: false
+      xpath: true
+  - format: html
+    name: leptris-whatwg
+    version: 1.9.443.0
+    features:
+      html5: true
+      xpath: true
+  - format: yaml
+    name: psych
+    version: 5.2.2
+    features:
+      streaming: false
+  - format: yaml
+    name: yeptris-yaml
+    version: 0.6.79.0
+    features:
+      streaming: true
+  - format: toml
+    name: toml-rb
+    version: 6.0.0
+    features:
+      comments: false
+      arrays_of_tables: true
+      inline_tables: true
+      multiline_strings: true
+  - format: toml
+    name: tomlib
+    version: 0.7.3
+    features:
+      comments: false
+      arrays_of_tables: true
+      inline_tables: true
+      multiline_strings: true
+  - format: toml
+    name: tomlrb
+    version: 3.0.0
+    features:
+      comments: false
+      arrays_of_tables: true
+      inline_tables: true
+      multiline_strings: true
+  - format: toml
+    name: teptris
+    version: 0.3.33.1
+    features:
+      comments: false
+      arrays_of_tables: true
+      inline_tables: true
+      multiline_strings: true
+  - format: cbor
+    name: cbor
+    version: 0.6.2.2
+    features:
+      streaming: false
+      canonical: false
+  - format: cbor
+    name: yeptris-cbor
+    version: 0.6.79.0
+    features:
+      streaming: false
+      canonical: false
+  parsing:
+  - adapter: psych
+    format: yaml
+    data_size: small
+    time_per_iterations: 0.001386400000001231
+    time_per_iteration: 0.0001386400000001231
+    iterations_per_second: 7212.925562601789
+    iterations_count: 10
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: small
+    time_per_iterations: 0.0002469000000928645
+    time_per_iteration: 2.469000000928645e-05
+    iterations_per_second: 40502.227607285466
+    iterations_count: 10
+  - adapter: psych
+    format: yaml
+    data_size: medium
+    time_per_iterations: 0.1572931000000608
+    time_per_iteration: 0.052431033333353604
+    iterations_per_second: 19.07267388079223
+    iterations_count: 3
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: medium
+    time_per_iterations: 0.029507599999988088
+    time_per_iteration: 0.009835866666662696
+    iterations_per_second: 101.66872263420987
+    iterations_count: 3
+  - adapter: psych
+    format: yaml
+    data_size: large
+    time_per_iterations: 0.5475769999998192
+    time_per_iteration: 0.5475769999998192
+    iterations_per_second: 1.8262271790092173
+    iterations_count: 1
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: large
+    time_per_iterations: 0.148051900000155
+    time_per_iteration: 0.148051900000155
+    iterations_per_second: 6.7543881571189095
+    iterations_count: 1
+  generation:
+  - adapter: psych
+    format: yaml
+    data_size: small
+    time_per_iterations: 0.01934619999997267
+    time_per_iteration: 0.001934619999997267
+    iterations_per_second: 516.897375195859
+    iterations_count: 10
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: small
+    time_per_iterations: 0.0007843000000775646
+    time_per_iteration: 7.843000000775646e-05
+    iterations_per_second: 12750.223127643801
+    iterations_count: 10
+  - adapter: psych
+    format: yaml
+    data_size: medium
+    time_per_iterations: 0.30430950000004486
+    time_per_iteration: 0.10143650000001496
+    iterations_per_second: 9.85838430939408
+    iterations_count: 3
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: medium
+    time_per_iterations: 0.14160880000008547
+    time_per_iteration: 0.04720293333336182
+    iterations_per_second: 21.18512408832071
+    iterations_count: 3
+  - adapter: psych
+    format: yaml
+    data_size: large
+    time_per_iterations: 1.395517499999869
+    time_per_iteration: 1.395517499999869
+    iterations_per_second: 0.7165800500531838
+    iterations_count: 1
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: large
+    time_per_iterations: 0.5443798999999672
+    time_per_iteration: 0.5443798999999672
+    iterations_per_second: 1.8369524664670027
+    iterations_count: 1
+  memory:
+  - adapter: psych
+    format: yaml
+    data_size: small
+    total_allocated: 1210
+    total_retained: 46
+    allocated_memory: 116800
+    retained_memory: 4960
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: small
+    total_allocated: 300
+    total_retained: 0
+    allocated_memory: 21600
+    retained_memory: 0
+  - adapter: psych
+    format: yaml
+    data_size: medium
+    total_allocated: 500811
+    total_retained: 42010
+    allocated_memory: 54705480
+    retained_memory: 4772680
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: medium
+    total_allocated: 230110
+    total_retained: 0
+    allocated_memory: 15635870
+    retained_memory: 0
+  - adapter: psych
+    format: yaml
+    data_size: large
+    total_allocated: 610146
+    total_retained: 520030
+    allocated_memory: 64591888
+    retained_memory: 57292912
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: large
+    total_allocated: 330022
+    total_retained: 0
+    allocated_memory: 19902335
+    retained_memory: 0
+  streaming:
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: small
+    time_per_iterations: 0.0002827000000706903
+    time_per_iteration: 2.827000000706903e-05
+    iterations_per_second: 35373.18711531468
+    iterations_count: 10
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: medium
+    time_per_iterations: 0.025122099999862257
+    time_per_iteration: 0.00837403333328742
+    iterations_per_second: 119.4167685032879
+    iterations_count: 3
+  - adapter: yeptris-yaml
+    format: yaml
+    data_size: large
+    time_per_iterations: 0.20075249999990774
+    time_per_iteration: 0.20075249999990774
+    iterations_per_second: 4.98125801671441
+    iterations_count: 1
